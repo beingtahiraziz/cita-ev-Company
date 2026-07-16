@@ -1,0 +1,345 @@
+.page {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--background-white);
+  color: var(--text-primary);
+  padding-bottom: 0;
+}
+
+/* 1. HERO */
+.hero {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 180px 24px 100px;
+  background-image: url('/images/hero_bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5, 14, 29, 0.96) 0%, rgba(5, 14, 29, 0.75) 100%);
+  z-index: 1;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+}
+
+.heroContent {
+  max-width: 720px;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: #00D46A;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  background: linear-gradient(to right, #ffffff, #00D46A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+/* Shared section titles */
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.sectionSubtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* Shared icon wrapper */
+.iconWrapper {
+  width: 70px;
+  height: 70px;
+  background: rgba(0, 212, 106, 0.1);
+  color: #00D46A;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* 2. INTRO */
+.introSection {
+  padding: 100px 5%;
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 3. MISSION & VISION */
+.mvSection {
+  padding: 40px 5% 100px;
+  background: var(--background-light);
+}
+
+.mvGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.mvCard {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 48px 40px;
+  transition: all 0.3s ease;
+}
+
+.mvCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 212, 106, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 212, 106, 0.1);
+}
+
+.mvCard h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.mvCard p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* 4. GUIDING PRINCIPLES */
+.principlesSection {
+  padding: 100px 5%;
+}
+
+.principlesContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.principlesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.principleCard {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 40px 32px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.principleCard:hover {
+  transform: translateY(-10px);
+  background: var(--background-light);
+  border-color: rgba(0, 212, 106, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 212, 106, 0.1);
+}
+
+.principleCard h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.principleCard p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+/* 5. CERTIFICATIONS */
+.certSection {
+  padding: 100px 5%;
+  background: var(--background-light);
+  text-align: center;
+}
+
+.certGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 60px auto 0;
+}
+
+.certTag {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(0, 212, 106, 0.05);
+  border: 1px solid rgba(0, 212, 106, 0.2);
+  padding: 22px 24px;
+  border-radius: 14px;
+  text-align: left;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.certTag:hover {
+  background: rgba(0, 212, 106, 0.1);
+  transform: translateY(-4px);
+}
+
+.certIcon {
+  color: #00D46A;
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* 6. GLOBAL PRESENCE */
+.globalSection {
+  padding: 100px 5%;
+}
+
+.globalContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.globalContent .iconWrapper {
+  margin: 0 auto 24px;
+}
+
+/* 7. CTA */
+.ctaSection {
+  padding: 40px 5% 120px;
+}
+
+.ctaCard {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(0, 212, 106, 0.12), rgba(0, 212, 106, 0.03));
+  border: 1px solid rgba(0, 212, 106, 0.25);
+  border-radius: 28px;
+  padding: 70px 40px;
+}
+
+.ctaTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.ctaText {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 auto 36px;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.ctaPrimary {
+  background: #00D46A;
+  color: #050e1d;
+}
+
+.ctaPrimary:hover {
+  background: #00ea75;
+  transform: translateY(-2px);
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--primary-color);
+}
+
+.ctaSecondary:hover {
+  border-color: #00D46A;
+  color: #00D46A;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .mvGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .introSection,
+  .principlesSection,
+  .certSection,
+  .globalSection {
+    padding: 70px 5%;
+  }
+
+  .ctaCard {
+    padding: 50px 24px;
+  }
+
+  .ctaTitle {
+    font-size: 1.75rem;
+  }
+}
