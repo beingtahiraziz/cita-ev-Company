@@ -1,14 +1,6 @@
-import type { Metadata } from "next";
-import { ProductDetail } from "@/components/products/ProductDetail";
-import { getProductBySlug } from "@/data/products";
+import { redirect } from "next/navigation";
 
-const product = getProductBySlug("smart-dc-eco")!;
-
-export const metadata: Metadata = {
-  title: `${product.name} | CITA EV Chargers Pakistan`,
-  description: product.heroSubheadline,
-};
-
+// This product was replaced by the PDF catalogue. Redirects to products index.
 export default function Page() {
-  return <ProductDetail product={product} />;
+  redirect("/products");
 }

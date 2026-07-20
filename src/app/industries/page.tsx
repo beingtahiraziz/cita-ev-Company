@@ -2,22 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
-import {
-  Home,
-  Building2,
-  Hotel,
-  ShoppingBag,
-  Plane,
-  Fuel,
-  Car,
-  GraduationCap,
-  Cross,
-  Trophy,
-  Landmark,
-  Truck,
-  ParkingCircle,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { PageExtras } from "@/components/sections/PageExtras";
+import { AnimatedHeroTitle } from "@/components/ui/AnimatedHeroTitle";
+import { industries } from "@/data/industries";
 import styles from "./page.module.css";
 
 const fadeUp: Variants = {
@@ -30,23 +20,6 @@ const stagger: Variants = {
   visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
 };
 
-const industries = [
-  { icon: <Home size={30} />, title: "Homes & Villas", text: "Fast, safe and future-ready home EV charging." },
-  { icon: <Building2 size={30} />, title: "Gated Communities", text: "Efficient, smart shared charging for residents." },
-  { icon: <Building2 size={30} />, title: "Office Buildings", text: "Support employee mobility and future-proof your workplace." },
-  { icon: <ParkingCircle size={30} />, title: "Parking Garages", text: "Convenient on-site charging for every visitor." },
-  { icon: <Hotel size={30} />, title: "Hotels & Resorts", text: "Improve guest experience with reliable EV charging." },
-  { icon: <ShoppingBag size={30} />, title: "Shopping Malls", text: "Enhance the shopping experience with charging facilities." },
-  { icon: <Plane size={30} />, title: "Airports", text: "Convenient charging for travellers and airport fleets." },
-  { icon: <Fuel size={30} />, title: "Petrol Pumps", text: "Attract modern drivers by adding EV charging." },
-  { icon: <Car size={30} />, title: "Car Rentals", text: "Dependable charging for electric rental fleets." },
-  { icon: <GraduationCap size={30} />, title: "Schools & Colleges", text: "Greener commuting across campuses." },
-  { icon: <Cross size={30} />, title: "Hospitals", text: "Always-available charging for staff and visitors." },
-  { icon: <Trophy size={30} />, title: "Sports Stadiums", text: "High-capacity charging for large-scale venues." },
-  { icon: <Landmark size={30} />, title: "Government Buildings", text: "Cleaner commuting for public employees and visitors." },
-  { icon: <Truck size={30} />, title: "Fleets & Depots", text: "High-performance systems to accelerate fleet electrification." },
-];
-
 export default function IndustriesPage() {
   return (
     <main className={styles.page}>
@@ -56,7 +29,7 @@ export default function IndustriesPage() {
         <div className={styles.heroContainer}>
           <motion.div className={styles.heroContent} initial="hidden" animate="visible" variants={fadeUp}>
             <span className={styles.eyebrow}>Industries</span>
-            <h1 className={styles.heroTitle}>EV Charging for Every Sector</h1>
+            <AnimatedHeroTitle text="EV Charging for Every Sector" className={styles.heroTitle} />
             <p className={styles.heroSubtitle}>
               From homes and workplaces to fleets and public infrastructure,
               CITA EV delivers tailored charging solutions across Pakistan.
@@ -69,16 +42,36 @@ export default function IndustriesPage() {
       <section className={styles.gridSection}>
         <div className={styles.gridContainer}>
           <motion.div className={styles.grid} variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
-            {industries.map((ind, i) => (
-              <motion.div key={i} className={styles.card} variants={fadeUp}>
-                <div className={styles.iconWrap}>{ind.icon}</div>
-                <h3 className={styles.cardTitle}>{ind.title}</h3>
-                <p className={styles.cardText}>{ind.text}</p>
+            {industries.map((ind) => (
+              <motion.div key={ind.slug} className={styles.card} variants={fadeUp}>
+                <Link href={`/industries/${ind.slug}`} className={styles.cardLink}>
+                  <div className={styles.cardImageWrap}>
+                    <Image src={ind.image} alt={ind.title} fill className={styles.cardImage} unoptimized />
+                  </div>
+                  <div className={styles.cardBody}>
+                    <h3 className={styles.cardTitle}>{ind.title}</h3>
+                    <p className={styles.cardText}>{ind.short}</p>
+                    <span className={styles.cardCta}>Learn more <ArrowRight size={15} /></span>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
+
+      {/* EXTRA SECTIONS */}
+      <PageExtras
+        trustItems={["Home to Highway", "AC & DC Solutions", "Scalable Deployments", "Local Support"]}
+        whyTitle="One partner for every sector"
+        whySubtitle="Whatever your property or fleet, CITA EV has a charging solution that fits."
+        features={[
+          { title: "Tailored Solutions", text: "Charger types and power levels matched to each site's real usage patterns." },
+          { title: "Certified Hardware", text: "UKCA, CE, ADQCC and SASO certified equipment built for demanding environments." },
+          { title: "Ongoing Support", text: "Installation, maintenance and smart management for long-term reliability." },
+        ]}
+        altBackground
+      />
 
       {/* CTA */}
       <section className={styles.ctaSection}>

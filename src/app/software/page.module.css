@@ -10,7 +10,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 180px 24px 90px;
+  padding: 150px 24px 75px;
   background-image: url('/images/software-dashboard-dark.jpg');
   background-size: cover;
   background-position: center;
@@ -29,7 +29,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 240px;
+  min-height: 180px;
   display: flex;
   align-items: center;
 }
@@ -151,18 +151,18 @@
 }
 
 .storeBadge {
-  padding: 12px 24px;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--text-primary);
-  transition: all 0.3s ease;
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+
+.storeBadge img {
+  height: 48px;
+  width: auto;
+  display: block;
 }
 
 .storeBadge:hover {
-  border-color: #00D46A;
-  color: #00D46A;
+  transform: translateY(-2px);
 }
 
 .splitImageWrap {
@@ -197,7 +197,7 @@
 }
 
 .faqItem {
-  background: #ffffff;
+  background: #eefaf2;
   border: 1px solid var(--border-color);
   border-radius: 14px;
   overflow: hidden;

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import { productsData, ProductData } from "@/data/products";
+import { AnimatedHeroTitle } from "@/components/ui/AnimatedHeroTitle";
 import styles from "./page.module.css";
 
 const fadeUpVariant: Variants = {
@@ -82,7 +83,7 @@ export default function ProductsPage() {
             variants={fadeUpVariant}
           >
             <span className={styles.eyebrow}>Our Products</span>
-            <h1 className={styles.heroTitle}>EV Chargers for Every Need</h1>
+            <AnimatedHeroTitle text="EV Chargers for Every Need" className={styles.heroTitle} />
             <p className={styles.heroSubtitle}>
               Explore our range of advanced AC and DC chargers for homes,
               businesses and public infrastructure across Pakistan.
@@ -144,7 +145,7 @@ export default function ProductsPage() {
               Request a Quote
             </Link>
             <a
-              href="https://wa.me/923001002226"
+              href="https://wa.me/923007929616"
               className={styles.ctaSecondary}
               target="_blank"
               rel="noopener noreferrer"

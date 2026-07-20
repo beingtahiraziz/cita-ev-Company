@@ -6,20 +6,33 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { productsData } from "@/data/products";
+import { industries } from "@/data/industries";
 import styles from "./Header.module.css";
 import { FiChevronDown, FiMenu, FiX } from "react-icons/fi";
 
-const NAV_LINKS = [
+type DropdownItem = { href: string; name: string; meta?: string };
+
+const dropdownData: Record<string, { items: DropdownItem[]; allHref: string; allLabel: string }> = {
+  products: {
+    items: productsData.map((p) => ({ href: `/products/${p.slug}`, name: p.name, meta: p.powerOutput })),
+    allHref: "/products",
+    allLabel: "View all products",
+  },
+  industries: {
+    items: industries.slice(0, 7).map((i) => ({ href: `/industries/${i.slug}`, name: i.title })),
+    allHref: "/industries",
+    allLabel: "View all industries",
+  },
+};
+
+const NAV_LINKS: { name: string; href: string; dropdown?: keyof typeof dropdownData }[] = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
-  { 
-    name: "Products", 
-    href: "/products",
-    hasDropdown: true
-  },
-  { name: "Industries", href: "/industries" },
+  { name: "Products", href: "/products", dropdown: "products" },
+  { name: "Industries", href: "/industries", dropdown: "industries" },
   { name: "Software", href: "/software" },
   { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/blog" },
   { name: "Downloads", href: "/downloads" },
   { name: "Partner Program", href: "/partner" },
 ];
@@ -27,6 +40,7 @@ const NAV_LINKS = [
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,12 +55,12 @@ export const Header = () => {
       <div className={styles.container}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          <Image 
-            src={scrolled ? "/logos/CITA-EV-Logo-Green.png" : "/logos/CITA-EV-Logo-Green.png"} 
-            alt="CITA EV" 
-            width={180} 
-            height={50} 
-            style={{ objectFit: 'contain' }} 
+          <Image
+            src="/logos/CITA-EV-Logo-Green.png"
+            alt="CITA EV"
+            width={180}
+            height={50}
+            style={{ objectFit: "contain" }}
             priority
           />
         </Link>
@@ -58,22 +72,18 @@ export const Header = () => {
               <li key={link.name} className={styles.navItem}>
                 <Link href={link.href} className={styles.navLink}>
                   {link.name}
-                  {link.hasDropdown && <FiChevronDown className={styles.dropdownIcon} />}
+                  {link.dropdown && <FiChevronDown className={styles.dropdownIcon} />}
                 </Link>
-                {link.hasDropdown && (
+                {link.dropdown && (
                   <div className={styles.dropdown}>
-                    {productsData.map((p) => (
-                      <Link
-                        key={p.slug}
-                        href={`/products/${p.slug}`}
-                        className={styles.dropdownItem}
-                      >
-                        {p.name}
-                        <span className={styles.dropdownMeta}>{p.powerOutput}</span>
+                    {dropdownData[link.dropdown].items.map((item) => (
+                      <Link key={item.href} href={item.href} className={styles.dropdownItem}>
+                        {item.name}
+                        {item.meta && <span className={styles.dropdownMeta}>{item.meta}</span>}
                       </Link>
                     ))}
-                    <Link href="/products" className={styles.dropdownAll}>
-                      View all products
+                    <Link href={dropdownData[link.dropdown].allHref} className={styles.dropdownAll}>
+                      {dropdownData[link.dropdown].allLabel}
                     </Link>
                   </div>
                 )}
@@ -84,7 +94,7 @@ export const Header = () => {
 
         {/* Desktop Actions */}
         <div className={styles.actions}>
-          <Button variant={scrolled ? "outline" : "outlineWhite"} href="https://wa.me/923001002226">
+          <Button variant={scrolled ? "outline" : "outlineWhite"} href="https://wa.me/923007929616">
             WhatsApp
           </Button>
           <Button variant="primary" href="/contact">
@@ -113,18 +123,61 @@ export const Header = () => {
             <ul className={styles.mobileNavList}>
               {NAV_LINKS.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className={styles.mobileNavLink}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
+                  {link.dropdown ? (
+                    <>
+                      <button
+                        type="button"
+                        className={styles.mobileNavToggle}
+                        onClick={() =>
+                          setOpenMobileDropdown((v) => (v === link.dropdown ? null : link.dropdown!))
+                        }
+                        aria-expanded={openMobileDropdown === link.dropdown}
+                      >
+                        {link.name}
+                        <FiChevronDown
+                          className={`${styles.mobileChevron} ${openMobileDropdown === link.dropdown ? styles.mobileChevronOpen : ""}`}
+                        />
+                      </button>
+                      {openMobileDropdown === link.dropdown && (
+                        <ul className={styles.mobileSubList}>
+                          {dropdownData[link.dropdown].items.map((item) => (
+                            <li key={item.href}>
+                              <Link
+                                href={item.href}
+                                className={styles.mobileSubLink}
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                {item.name}
+                                {item.meta && <span className={styles.mobileSubMeta}>{item.meta}</span>}
+                              </Link>
+                            </li>
+                          ))}
+                          <li>
+                            <Link
+                              href={dropdownData[link.dropdown].allHref}
+                              className={styles.mobileSubAll}
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {dropdownData[link.dropdown].allLabel}
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className={styles.mobileNavLink}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
             <div className={styles.mobileActions}>
-              <Button variant="secondary" href="https://wa.me/923001002226" fullWidth>
+              <Button variant="secondary" href="https://wa.me/923007929616" fullWidth>
                 WhatsApp
               </Button>
               <Button variant="primary" href="/contact" fullWidth>

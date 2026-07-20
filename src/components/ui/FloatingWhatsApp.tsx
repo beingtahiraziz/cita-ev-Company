@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './FloatingWhatsApp.module.css';
 
 export const FloatingWhatsApp = () => {
-  // Use the phone number from the footer: 0300-1002226
-  const phoneNumber = "923001002226"; // Formatting for WhatsApp link (assuming +92 for Pakistan)
+  // Primary WhatsApp contact: Naeem Khalid 0300-7929616
+  const phoneNumber = "923007929616"; // +92 for Pakistan
   const message = "Hello, I would like to know more about CITA EV Chargers.";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 

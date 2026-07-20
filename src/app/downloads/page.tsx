@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { FileText, Download, Award, ArrowRight } from "lucide-react";
 import { productsData } from "@/data/products";
+import { PageExtras } from "@/components/sections/PageExtras";
+import { AnimatedHeroTitle } from "@/components/ui/AnimatedHeroTitle";
 import styles from "./page.module.css";
 
 const fadeUp: Variants = {
@@ -38,7 +40,7 @@ export default function DownloadsPage() {
         <div className={styles.heroContainer}>
           <motion.div className={styles.heroContent} initial="hidden" animate="visible" variants={fadeUp}>
             <span className={styles.eyebrow}>Downloads</span>
-            <h1 className={styles.heroTitle}>Datasheets & Documents</h1>
+            <AnimatedHeroTitle text="Datasheets & Documents" className={styles.heroTitle} />
             <p className={styles.heroSubtitle}>
               Download product datasheets, certifications and technical
               documents for the full CITA EV charging range.
@@ -137,6 +139,19 @@ export default function DownloadsPage() {
         </div>
       </section>
 
+      {/* EXTRA SECTIONS */}
+      <PageExtras
+        trustItems={["Product Datasheets", "Certifications", "Warranty Information", "Technical Specs"]}
+        whyTitle="Everything you need to specify with confidence"
+        whySubtitle="Technical resources for buyers, consultants and contractors."
+        features={[
+          { title: "Product Specs", text: "Detailed datasheets covering power, protection ratings, connectivity and dimensions." },
+          { title: "Compliance Docs", text: "Certifications confirming CITA hardware meets international safety standards." },
+          { title: "Sales Support", text: "Can't find a document? Our team will send exactly what your project needs." },
+        ]}
+        altBackground
+      />
+
       {/* CTA */}
       <section className={styles.ctaSection}>
         <motion.div className={styles.ctaCard} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
@@ -144,7 +159,7 @@ export default function DownloadsPage() {
           <p className={styles.ctaText}>Ask our team for datasheets, technical specs or pricing for any CITA EV product.</p>
           <div className={styles.ctaButtons}>
             <Link href="/contact" className={styles.ctaPrimary}>Contact Us</Link>
-            <a href="https://wa.me/923001002226" className={styles.ctaSecondary} target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+            <a href="https://wa.me/923007929616" className={styles.ctaSecondary} target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
           </div>
         </motion.div>
       </section>

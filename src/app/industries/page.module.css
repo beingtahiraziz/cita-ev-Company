@@ -10,7 +10,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 180px 24px 80px;
+  padding: 150px 24px 75px;
   background-image: url('/images/dealer_bg.jpg');
   background-size: cover;
   background-position: center;
@@ -29,7 +29,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 220px;
+  min-height: 180px;
   display: flex;
   align-items: center;
 }
@@ -82,29 +82,46 @@
 }
 
 .card {
-  background: #ffffff;
+  height: 100%;
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #eefaf2;
   border: 1px solid var(--border-color);
   border-radius: 18px;
-  padding: 34px 28px;
+  overflow: hidden;
   transition: all 0.3s ease;
 }
 
-.card:hover {
+.cardLink:hover {
   transform: translateY(-8px);
-  border-color: rgba(0, 212, 106, 0.35);
-  box-shadow: 0 12px 30px rgba(0, 212, 106, 0.1);
+  border-color: rgba(0, 212, 106, 0.4);
+  box-shadow: 0 14px 34px rgba(0, 212, 106, 0.12);
 }
 
-.iconWrap {
-  width: 64px;
-  height: 64px;
-  background: rgba(0, 212, 106, 0.1);
-  color: #00D46A;
-  border-radius: 18px;
+.cardImageWrap {
+  position: relative;
+  width: 100%;
+  height: 190px;
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cardLink:hover .cardImage {
+  transform: scale(1.06);
+}
+
+.cardBody {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px 24px 26px;
 }
 
 .cardTitle {
@@ -118,6 +135,22 @@
   font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.cardCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #00D46A;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: gap 0.3s ease;
+}
+
+.cardLink:hover .cardCta {
+  gap: 12px;
 }
 
 /* CTA */

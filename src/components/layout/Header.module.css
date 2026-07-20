@@ -16,13 +16,27 @@
 }
 
 .container {
-  max-width: 1400px; /* Wider container just for header to fit 8 links */
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+}
+
+/* Keep the header off the screen edge on smaller screens where 1280 + content
+   would otherwise touch the sides. */
+@media (max-width: 1320px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
 }
 
 .logo {
@@ -44,7 +58,7 @@
 
 .navList {
   display: flex;
-  gap: 1rem;
+  gap: 1.15rem;
   list-style: none;
   align-items: center;
 }
@@ -57,7 +71,7 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: #FFFFFF;
   transition: color var(--transition-fast);
@@ -99,13 +113,21 @@
   display: flex;
 }
 
-.dropdown::before {
+/* Invisible hover bridge on the nav item itself (NOT inside the dropdown, so
+   it is not clipped by the dropdown's overflow) — keeps the dropdown open
+   while the cursor moves across the gap into it. */
+.navItem::after {
   content: "";
   position: absolute;
-  top: -0.75rem;
-  left: 0;
-  width: 100%;
-  height: 0.75rem;
+  top: 100%;
+  left: -0.5rem;
+  right: -0.5rem;
+  height: 1.1rem;
+  display: none;
+}
+
+.navItem:hover::after {
+  display: block;
 }
 
 .dropdownItem {
@@ -183,10 +205,76 @@
   top: 100%;
   left: 0;
   width: 100%;
+  max-height: calc(100vh - 72px);
+  overflow-y: auto;
   background-color: var(--background-white);
   padding: var(--spacing-md);
   box-shadow: var(--shadow-lg);
   border-top: 1px solid var(--border-color);
+}
+
+/* Mobile Products expandable */
+.mobileNavToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  color: var(--primary-color);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.mobileChevron {
+  transition: transform 0.3s ease;
+}
+
+.mobileChevronOpen {
+  transform: rotate(180deg);
+}
+
+.mobileSubList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0.35rem 0 0.5rem 0.75rem;
+  margin: 0;
+  border-left: 2px solid rgba(0, 212, 106, 0.25);
+}
+
+.mobileSubLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0.55rem 0.25rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.mobileSubLink:active,
+.mobileSubLink:hover {
+  color: var(--secondary-color);
+}
+
+.mobileSubMeta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.mobileSubAll {
+  display: block;
+  padding: 0.55rem 0.25rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--secondary-color);
 }
 
 .mobileNavList {

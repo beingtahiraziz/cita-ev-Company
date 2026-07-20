@@ -2,7 +2,10 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+import { PageExtras } from "@/components/sections/PageExtras";
+import { AnimatedHeroTitle } from "@/components/ui/AnimatedHeroTitle";
 import styles from "./page.module.css";
 
 const fadeUp: Variants = {
@@ -10,30 +13,9 @@ const fadeUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
-const contactCards = [
-  {
-    icon: <Phone size={24} />,
-    title: "Call Us",
-    lines: ["0300-1002226", "0300-2929616"],
-    href: "tel:+923001002226",
-  },
-  {
-    icon: <MessageCircle size={24} />,
-    title: "WhatsApp",
-    lines: ["0300-1002226", "0300-2929616"],
-    href: "https://wa.me/923001002226",
-  },
-  {
-    icon: <Mail size={24} />,
-    title: "Email",
-    lines: ["contact@superfastevcharger.com"],
-    href: "mailto:contact@superfastevcharger.com",
-  },
-  {
-    icon: <MapPin size={24} />,
-    title: "Head Office",
-    lines: ["Office No 810, Level 8, HI Q Towers,", "Jail Road, Lahore, Punjab, Pakistan"],
-  },
+const people = [
+  { name: "Naeem Khalid", phone: "+92 300 7929616", tel: "+923007929616", wa: "923007929616" },
+  { name: "Mazhar Hussain", phone: "+92 300 1002226", tel: "+923001002226", wa: "923001002226" },
 ];
 
 export default function ContactPage() {
@@ -45,7 +27,7 @@ export default function ContactPage() {
         <div className={styles.heroContainer}>
           <motion.div className={styles.heroContent} initial="hidden" animate="visible" variants={fadeUp}>
             <span className={styles.eyebrow}>Contact Us</span>
-            <h1 className={styles.heroTitle}>Let&apos;s Power Your EV Charging</h1>
+            <AnimatedHeroTitle text="Let's Power Your EV Charging" className={styles.heroTitle} />
             <p className={styles.heroSubtitle}>
               Tell us about your site and vehicles and our team will recommend
               the right CITA EV solution across Pakistan.
@@ -61,30 +43,35 @@ export default function ContactPage() {
           <motion.div className={styles.infoColumn} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <h2 className={styles.blockTitle}>Get in touch</h2>
             <p className={styles.blockText}>
-              Operated by BLUEOCEAN TECH IMPEX PRIVATE LIMITED, official
+              Operated by <span className={styles.blueCompany}>BLUEOCEAN TECH IMPEX PRIVATE LIMITED</span>, official
               distributor of CITA EV charging solutions in Pakistan.
             </p>
             <div className={styles.infoGrid}>
-              {contactCards.map((c, i) => {
-                const inner = (
-                  <>
-                    <span className={styles.infoIcon}>{c.icon}</span>
-                    <div>
-                      <h3 className={styles.infoTitle}>{c.title}</h3>
-                      {c.lines.map((l, j) => (
-                        <p key={j} className={styles.infoLine}>{l}</p>
-                      ))}
-                    </div>
-                  </>
-                );
-                return c.href ? (
-                  <a key={i} href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className={styles.infoCard}>
-                    {inner}
+              {people.map((p) => (
+                <div key={p.name} className={styles.personCard}>
+                  <h3 className={styles.infoTitle}>{p.name}</h3>
+                  <a href={`tel:${p.tel}`} className={styles.contactRow}>
+                    <span className={styles.rowIcon}><Phone size={16} /></span> {p.phone}
                   </a>
-                ) : (
-                  <div key={i} className={styles.infoCard}>{inner}</div>
-                );
-              })}
+                  <a href={`https://wa.me/${p.wa}`} target="_blank" rel="noopener noreferrer" className={styles.contactRow}>
+                    <span className={`${styles.rowIcon} ${styles.waIcon}`}><FaWhatsapp size={17} /></span> {p.phone}
+                  </a>
+                </div>
+              ))}
+              <a href="mailto:contact@superfastevcharger.com" className={styles.infoCard}>
+                <span className={styles.infoIcon}><Mail size={22} /></span>
+                <div>
+                  <h3 className={styles.infoTitle}>Email</h3>
+                  <p className={styles.infoLine}>contact@superfastevcharger.com</p>
+                </div>
+              </a>
+              <div className={styles.infoCard}>
+                <span className={styles.infoIcon}><MapPin size={22} /></span>
+                <div>
+                  <h3 className={styles.infoTitle}>Head Office</h3>
+                  <p className={styles.infoLine}>Office No. 810, Level 8, HI Q Towers, Jail Road, Lahore, Punjab, Pakistan</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -121,6 +108,18 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </section>
+      {/* EXTRA SECTIONS */}
+      <PageExtras
+        trustItems={["Free Consultation", "Nationwide Coverage", "Fast Response", "Expert Guidance"]}
+        whyTitle="How we help"
+        whySubtitle="A simple, guided process from first enquiry to a fully working charger."
+        features={[
+          { title: "Assess", text: "We review your site, vehicles and power supply to understand your needs." },
+          { title: "Recommend", text: "Our team suggests the right charger and configuration with clear pricing." },
+          { title: "Install & Support", text: "Certified local partners install your charger and provide ongoing support." },
+        ]}
+        altBackground
+      />
     </main>
   );
 }

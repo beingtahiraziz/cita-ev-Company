@@ -1,14 +1,8 @@
-import type { Metadata } from "next";
-import { ProductDetail } from "@/components/products/ProductDetail";
-import { getProductBySlug } from "@/data/products";
+import { redirect } from "next/navigation";
 
-const product = getProductBySlug("smart-11")!;
-
-export const metadata: Metadata = {
-  title: `${product.name} | CITA EV Chargers Pakistan`,
-  description: product.heroSubheadline,
-};
-
+// Smart 11 has been removed from the catalog.
+// This route redirects to the products index so no build/runtime error occurs.
+// To fully remove it, delete this folder locally: `git rm -r src/app/products/smart-11`
 export default function Page() {
-  return <ProductDetail product={product} />;
+  redirect("/products");
 }

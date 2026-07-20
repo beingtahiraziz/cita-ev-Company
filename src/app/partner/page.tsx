@@ -3,6 +3,7 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { ShieldCheck, TrendingUp, Users, Target, BookOpen, Headset, Briefcase, Award } from "lucide-react";
+import { AnimatedHeroTitle } from "@/components/ui/AnimatedHeroTitle";
 import styles from "./page.module.css";
 
 export default function PartnerPage() {
@@ -54,7 +55,7 @@ export default function PartnerPage() {
             animate="visible"
             variants={fadeUpVariant}
           >
-            <h1 className={styles.heroTitle}>Become A CITA EV Charging Partner</h1>
+            <AnimatedHeroTitle text="Become A CITA EV Charging Partner" className={styles.heroTitle} />
             <p className={styles.heroSubtitle}>
               Join our growing dealer and partner network across Pakistan.
             </p>

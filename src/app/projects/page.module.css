@@ -10,7 +10,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 180px 24px 80px;
+  padding: 150px 24px 75px;
   background-image: url('/images/project_highway.jpg');
   background-size: cover;
   background-position: center;
@@ -29,7 +29,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 220px;
+  min-height: 180px;
   display: flex;
   align-items: center;
 }
@@ -82,7 +82,7 @@
 }
 
 .card {
-  background: #ffffff;
+  background: #eefaf2;
   border: 1px solid var(--border-color);
   border-radius: 20px;
   overflow: hidden;
@@ -129,12 +129,101 @@
 }
 
 .cardSpec {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   font-size: 0.95rem;
   color: #00D46A;
-  font-weight: 500;
+  font-weight: 600;
+  transition: gap 0.3s ease;
+}
+
+.cardSpec:hover {
+  gap: 12px;
+  text-decoration: underline;
+}
+
+/* SITE PHOTOS */
+.photosSection {
+  padding: 80px 24px;
+}
+
+.photosContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.photosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.photoCard {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.photoCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+
+.photoImg {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.photoCard:hover .photoImg {
+  transform: scale(1.06);
+}
+
+/* PROJECT BROCHURE PDF */
+.brochureSection {
+  padding: 40px 24px 90px;
+  background: var(--background-light);
+}
+
+.brochureContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pdfFrameWrap {
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  background: #fff;
+}
+
+.pdfFrame {
+  width: 100%;
+  height: 640px;
+  border: none;
+  display: block;
+}
+
+.brochureActions {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .photosGrid {
+    grid-template-columns: 1fr;
+  }
+  .pdfFrame {
+    height: 420px;
+  }
 }
 
 /* HIGHLIGHTS */
@@ -163,7 +252,7 @@
 }
 
 .highlightCard {
-  background: #ffffff;
+  background: #eefaf2;
   border: 1px solid var(--border-color);
   border-radius: 18px;
   padding: 34px 26px;

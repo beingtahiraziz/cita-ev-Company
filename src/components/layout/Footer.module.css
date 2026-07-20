@@ -54,6 +54,49 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
+.blueCompany {
+  color: #5AA9FF;
+  font-weight: 700;
+}
+
+/* Contact list with icons */
+.contactList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.contactPerson {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  transition: color var(--transition-fast);
+}
+
+.contactRow svg {
+  color: var(--secondary-color);
+  flex-shrink: 0;
+}
+
+.waIcon {
+  color: #25D366 !important;
+}
+
+a.contactRow:hover {
+  color: var(--secondary-color);
+}
+
 .title {
   color: #FFFFFF;
   font-size: 1.1rem;

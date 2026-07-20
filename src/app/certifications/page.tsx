@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import { Download, ShieldCheck, Award } from "lucide-react";
+import { AnimatedHeroTitle } from "@/components/ui/AnimatedHeroTitle";
 import styles from "./page.module.css";
 
 const certifications = [
@@ -36,7 +37,7 @@ export default function CertificationsPage() {
       {/* HERO */}
       <section className={styles.hero}>
         <motion.div className={styles.heroContainer} initial="hidden" animate="visible" variants={fadeUp}>
-          <h1 className={styles.heroTitle}>Certified Technology You Can Trust</h1>
+          <AnimatedHeroTitle text="Certified Technology You Can Trust" className={styles.heroTitle} />
           <p className={styles.heroSubtitle}>
             Designed and manufactured to meet international standards for quality, safety and performance.
           </p>

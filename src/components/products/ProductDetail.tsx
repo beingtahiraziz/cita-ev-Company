@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check, X, ArrowRight, Smartphone, Award, Nfc, Plug, AlertTriangle, Zap, Activity, Server, Wifi, Sun, Shield, ChevronDown, ChevronUp } from "lucide-react";
 import type { ProductData } from "@/data/products";
+import { AnimatedHeroTitle } from "@/components/ui/AnimatedHeroTitle";
 import styles from "./ProductDetail.module.css";
 
 const fadeUp = {
@@ -17,6 +18,7 @@ export function ProductDetail({ product }: { product: ProductData }) {
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedDatasheetUrl, setSelectedDatasheetUrl] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [selectedApp, setSelectedApp] = useState<string | null>(null);
 
   const handleDownloadClick = (e: React.MouseEvent, modelName: string, url: string = "") => {
     e.preventDefault();
@@ -39,6 +41,20 @@ export function ProductDetail({ product }: { product: ProductData }) {
 
   const isSoftware = product.category === "Software";
 
+  const commonFaqs = isSoftware
+    ? [
+        { q: "Is the software included with CITA chargers?", a: "Yes, CITA chargers integrate with the CITA EV App and CPMS. Talk to our team about setting it up for your chargers." },
+        { q: "How do I get access?", a: "Contact our team and we will set up your account and connect your chargers to the platform." },
+        { q: "Does it work across multiple sites?", a: "Yes. CPMS manages chargers across one or many locations from a single dashboard." },
+      ]
+    : [
+        { q: "Does CITA provide installation in Pakistan?", a: "Yes. Installation is carried out by trained local partners, including a site assessment and safe electrical connection." },
+        { q: "What warranty is included?", a: "AC chargers come with a 3-year extendable warranty and DC chargers a 2-year extendable warranty, with local technical support." },
+        { q: "Which electric vehicles are compatible?", a: "CITA chargers work with all major EV brands available in Pakistan, including BYD, MG, Kia, Hyundai, BMW and Tesla." },
+        { q: "How do I get pricing for this charger?", a: "Send us your requirement through the quote form or WhatsApp and our team will share pricing and full specifications." },
+      ];
+  const faqList = [...product.faqs, ...commonFaqs];
+
   const iconMap: Record<string, React.ElementType> = {
     smartphone: Smartphone,
     award: Award,
@@ -57,15 +73,10 @@ export function ProductDetail({ product }: { product: ProductData }) {
     <main className={styles.page}>
 
       {/* 1. Full Width Hero Section */}
-      <section className={styles.hero} style={{ backgroundImage: `linear-gradient(to right, rgba(5,11,20,0.95) 0%, rgba(5,11,20,0.7) 50%, rgba(5,11,20,0.3) 100%), url(${product.heroImageUrl || product.imageUrl})` }}>
+      <section className={styles.hero} style={{ backgroundImage: `linear-gradient(to right, rgba(5,11,20,0.95) 0%, rgba(5,11,20,0.72) 55%, rgba(5,11,20,0.55) 100%), url("/images/hero_bg.jpg")` }}>
         <div className={styles.heroContainer}>
           <div className={styles.heroContent}>
-            <motion.h1
-              className={styles.productName}
-              initial="hidden" animate="visible" variants={fadeUp}
-            >
-              {product.name.toUpperCase()}
-            </motion.h1>
+            <AnimatedHeroTitle text={product.name.toUpperCase()} className={styles.productName} />
             <motion.p
               className={styles.heroSubheadline}
               initial="hidden" animate="visible" variants={fadeUp}
@@ -115,6 +126,46 @@ export function ProductDetail({ product }: { product: ProductData }) {
         </div>
       </section>
 
+      {/* GALLERY SECTION */}
+      {product.gallery && product.gallery.length > 0 && (
+        <section className={styles.gallerySection}>
+          <motion.h2 className={styles.galleryTitle} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            {product.name} Gallery
+          </motion.h2>
+          <motion.div className={styles.galleryGrid} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={fadeUp}>
+            {product.gallery.map((g, i) => (
+              <div key={i} className={styles.galleryCard}>
+                <div className={styles.galleryImgWrap}>
+                  <Image src={g.src} alt={`${product.name} - ${g.label}`} fill className={styles.galleryImg} unoptimized />
+                </div>
+                <span className={styles.galleryLabel}>{g.label}</span>
+              </div>
+            ))}
+          </motion.div>
+        </section>
+      )}
+
+      {/* SPECIFICATIONS SECTION */}
+      {!isSoftware && product.comparisonTable && product.comparisonTable[0] && (
+        <section className={styles.specsSection}>
+          <div className={styles.specsContainer}>
+            <motion.h2 className={styles.specsTitle} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              Key Specifications
+            </motion.h2>
+            <motion.div className={styles.specsGrid} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={fadeUp}>
+              <div className={styles.specItem}><span className={styles.specKey}>Power Output</span><span className={styles.specVal}>{product.powerOutput}</span></div>
+              <div className={styles.specItem}><span className={styles.specKey}>Category</span><span className={styles.specVal}>{product.category}</span></div>
+              <div className={styles.specItem}><span className={styles.specKey}>Protection</span><span className={styles.specVal}>{product.comparisonTable[0].protection}</span></div>
+              <div className={styles.specItem}><span className={styles.specKey}>Mounting</span><span className={styles.specVal}>{product.comparisonTable[0].mounting}</span></div>
+              <div className={styles.specItem}><span className={styles.specKey}>Connector / Cable</span><span className={styles.specVal}>{product.comparisonTable[0].cable}</span></div>
+              <div className={styles.specItem}><span className={styles.specKey}>Warranty</span><span className={styles.specVal}>{product.comparisonTable[0].warranty}</span></div>
+              <div className={styles.specItem}><span className={styles.specKey}>Smart App</span><span className={styles.specVal}>{product.comparisonTable[0].smartApp ? "Yes" : "No"}</span></div>
+              <div className={styles.specItem}><span className={styles.specKey}>RFID Access</span><span className={styles.specVal}>{product.comparisonTable[0].rfid ? "Yes" : "No"}</span></div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
       {/* HARDWARE-ONLY MARKETING SECTIONS */}
       {!isSoftware && (
       <>
@@ -132,7 +183,7 @@ export function ProductDetail({ product }: { product: ProductData }) {
           </ul>
         </div>
         <div className={styles.splitImageContainerLight}>
-           <Image src={product.imageUrl} alt="IP65 Rating" fill className={styles.splitImage} unoptimized />
+           <Image src={(product.gallery && product.gallery[1]?.src) || product.heroImageUrl || product.imageUrl} alt={`${product.name} durability`} fill className={styles.splitImage} unoptimized />
         </div>
       </section>
 
@@ -186,8 +237,14 @@ export function ProductDetail({ product }: { product: ProductData }) {
           </ul>
           <a href="/software" className={styles.learnMoreLink}>Learn more <ArrowRight size={20}/></a>
           <div className={styles.appStores}>
-            <a href="https://apps.apple.com/gb/app/citaev/id6505054937" target="_blank" rel="noopener noreferrer" className={styles.appBadge}>App Store</a>
-            <a href="https://play.google.com/store/apps/details?id=com.cita.ev&hl=en" target="_blank" rel="noopener noreferrer" className={styles.appBadge}>Google Play</a>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <a href="https://apps.apple.com/gb/app/citaev/id6505054937" target="_blank" rel="noopener noreferrer" className={styles.appBadge}>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" />
+            </a>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <a href="https://play.google.com/store/apps/details?id=com.cita.ev&hl=en" target="_blank" rel="noopener noreferrer" className={styles.appBadge}>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+            </a>
           </div>
         </div>
         <div className={styles.splitImageContainerDark}>
@@ -301,12 +358,13 @@ export function ProductDetail({ product }: { product: ProductData }) {
           <div className={styles.marqueeWrapper}>
             <div className={styles.marqueeTrack}>
               {[...product.targetApplications, ...product.targetApplications].map((app, idx) => (
-                <div key={idx} className={styles.appCardMarquee}>
+                <button key={idx} type="button" className={styles.appCardMarquee} onClick={() => setSelectedApp(app)}>
                   <div className={styles.appIconWrapper}>
                     <Check size={24} className={styles.appIcon} />
                   </div>
                   <h3 className={styles.appTitle}>{app}</h3>
-                </div>
+                  <span className={styles.appHint}>View recommended charger</span>
+                </button>
               ))}
             </div>
           </div>
@@ -314,13 +372,13 @@ export function ProductDetail({ product }: { product: ProductData }) {
       )}
 
       {/* 7. FAQS */}
-      {product.faqs && product.faqs.length > 0 && (
+      {faqList.length > 0 && (
         <section className={styles.faqSection}>
           <motion.h2 className={styles.sectionTitle} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             Frequently Asked Questions
           </motion.h2>
           <div className={styles.faqContainer}>
-            {product.faqs.map((faq, idx) => (
+            {faqList.map((faq, idx) => (
               <div key={idx} className={`${styles.faqItem} ${openFaq === idx ? styles.faqOpen : ''}`}>
                 <button
                   className={styles.faqQuestion}
@@ -357,6 +415,24 @@ export function ProductDetail({ product }: { product: ProductData }) {
               </label>
               <button type="submit" className={styles.modalSubmit}>Download Now</button>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* IDEAL APPLICATION POPUP */}
+      {selectedApp && (
+        <div className={styles.modalOverlay} onClick={() => setSelectedApp(null)}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.modalClose} onClick={() => setSelectedApp(null)}><X size={24} /></button>
+            <span className={styles.appPopEyebrow}>Recommended Charger</span>
+            <h3 className={styles.modalTitle}>{selectedApp}</h3>
+            <p className={styles.appPopText}>
+              For <strong>{selectedApp}</strong>, the <strong>{product.name}</strong> ({product.powerOutput}) is a great fit &mdash; {product.heroSubheadline}
+            </p>
+            <div className={styles.appPopActions}>
+              <a href="/contact" className={styles.appPopPrimary}>Get a quote</a>
+              <a href="https://wa.me/923007929616" target="_blank" rel="noopener noreferrer" className={styles.appPopSecondary}>WhatsApp</a>
+            </div>
           </div>
         </div>
       )}

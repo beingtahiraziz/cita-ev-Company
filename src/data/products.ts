@@ -33,405 +33,361 @@ export interface ProductData {
   comparisonTable?: ComparisonCol[];
   smartFeatures?: SmartFeature[];
   heroImageUrl?: string;
+  gallery?: { src: string; label: string }[];
 }
 
+const acFeatures: SmartFeature[] = [
+  { title: "Access with mobile app via WiFi / 4G / Ethernet", icon: "smartphone" },
+  { title: "Compatible with all Type 2 charging cables", icon: "plug" },
+  { title: "RFID access for instant command", icon: "nfc" },
+  { title: "MID-certified energy meter", icon: "zap" },
+  { title: "Protection IP65 & IK10", icon: "shield" },
+  { title: "OCPP 1.6 JSON integration", icon: "server" },
+];
+
 export const productsData: ProductData[] = [
+  /* ================= RESIDENTIAL ================= */
   {
     slug: "smart-7",
     name: "Smart 7",
     category: "Residential",
     powerOutput: "7kW",
-    heroHeadline: "Reliable Everyday EV Charging",
-    heroSubheadline: "Smart, efficient and secure home charging designed for daily electric vehicle use.",
-    description: "The CITA Smart 7 has been developed to provide dependable home charging for EV owners who require a balance between performance, safety and intelligent functionality. Its compact design allows installation in garages, carports, residential parking spaces and apartment buildings while maintaining a modern appearance. With integrated smart charging technology, users can manage charging sessions, monitor energy usage and optimize charging schedules through connected software platforms.",
+    heroHeadline: "7kW AC Compact EV Charging Station",
+    heroSubheadline: "A compact, high-performance home and workplace charging solution with IP65 & IK10 ratings.",
+    description: "The CITA Smart 7 is a compact and high-performance home and workplace charging solution. It delivers maximum power up to 7kW for single-phase installation and comes with an integrated Type 2 socket. The Smart 7's compact housing design is less than 12 inches and operates in extreme environments, from -30°C ice and snow to 55°C direct sunshine. It connects using WiFi to your network and comes with a three-year warranty.",
     benefits: [
-      "Simple Daily Charging",
-      "Reduced Charging Costs",
-      "Smart Monitoring",
-      "Remote Management",
-      "Enhanced Safety",
-      "Weather Resistant Construction",
-      "Future Software Compatibility"
+      "Compact Sub-12-inch Design",
+      "Up to 7kW Single-Phase Power",
+      "Integrated Type 2 Socket",
+      "Extreme -30°C to 55°C Operation",
+      "Smart App Monitoring",
+      "IP65 & IK10 Protection",
+      "3-Year Warranty",
     ],
-    targetApplications: [
-      "BYD Atto 3", "BYD Dolphin", "BYD Seal", "MG ZS EV", "MG4", "Kia EV6", "Hyundai IONIQ 5", "BMW i4", "Mercedes EQ Series"
-    ],
-    imageUrl: "https://citaevcharger.co.uk/wp-content/uploads/2024/08/Group-2119-1.png",
-    faqs: [
-      { q: "Which charger is best for a home?", a: "Smart 7, Smart 7 Eco and Smart 7 Pro are all designed for residential use." },
-      { q: "Can chargers be installed outdoors?", a: "Yes, suitable models are designed for outdoor environments." },
-      { q: "Can I monitor charging through my phone?", a: "Yes, supported models include smart monitoring features." }
+    targetApplications: ["Homes", "Villas", "Apartments", "Workplaces", "Garages", "Carports"],
+    imageUrl: "/products/Smart 7.png",
+    heroImageUrl: "/products/Side-view-7.png",
+    gallery: [
+      { src: "/images/Smart%207%20Ultra/13.jpg", label: "Product view" },
+      { src: "/images/Smart%207%20Ultra/19.jpg", label: "Installed" },
+      { src: "/images/Smart%207%20Ultra/31.jpg", label: "In use" },
     ],
     datasheetUrl: "https://citaevcharger.co.uk/wp-content/uploads/2025/03/CITA-Smart-Pro-7.pdf",
-    smartFeatures: [
-      { title: "Access with mobile app via WiFi /4G/ Ethernet", icon: "smartphone" },
-      { title: "Up to 3 years warranty (extendable)", icon: "award" },
-      { title: "RFID access for instant command", icon: "nfc" },
-      { title: "Compatible with all type 2 charging cables", icon: "plug" },
-      { title: "PME fault detection", icon: "alert-triangle" },
-      { title: "MID-certified energy meter", icon: "zap" },
-      { title: "Active & Dynamic Load Balancing", icon: "activity" },
-      { title: "OCPP 1.6 JSON integration", icon: "server" },
-      { title: "Modbus Integration to Solar PV & Smart System", icon: "sun" },
-      { title: "IP65 and IK10 Rated EV Charger", icon: "shield" }
+    smartFeatures: acFeatures,
+    faqs: [
+      { q: "What is the maximum power of the Smart 7?", a: "Up to 7kW on a single-phase supply, delivered through an integrated Type 2 socket." },
+      { q: "Can it operate outdoors in extreme weather?", a: "Yes. It is rated for -30°C to 55°C and carries IP65 & IK10 protection for outdoor use." },
+      { q: "What warranty is included?", a: "The Smart 7 comes with a 3-year warranty." },
     ],
     comparisonTable: [
-      { name: "CITA SMART PRO 7KW", protection: "IP65 & IK10", smartApp: true, mounting: "On a wall & on a pole", rfid: true, touchScreen: false, compatibleAll: true, warranty: "3 Years", cable: "Type 2 Charging Cable 5 Meters", datasheet: "Download", datasheetUrl: "https://citaevcharger.co.uk/wp-content/uploads/2025/03/CITA-Smart-Pro-7.pdf" },
-      { name: "CITA SMART 7KW ULTRA", protection: "IP54 & IK10", smartApp: true, mounting: "On a wall & on a pole", rfid: true, touchScreen: true, compatibleAll: true, warranty: "3 Years", cable: "Tethered Type 2, 5 meters cable", datasheet: "Download" },
-      { name: "CITA SMART 7KW ECO", protection: "IP65 & IK10", smartApp: true, mounting: "On a wall & on a pole", rfid: true, touchScreen: false, compatibleAll: true, warranty: "3 Years", cable: "Tethered Type 2, 5 meters cable", datasheet: "Download" }
-    ]
+      { name: "CITA SMART 7", protection: "IP65 & IK10", smartApp: true, mounting: "Wall mounted", rfid: true, touchScreen: false, compatibleAll: true, warranty: "3 Years", cable: "Type 2 socket / 5m cable", datasheet: "Download", datasheetUrl: "https://citaevcharger.co.uk/wp-content/uploads/2025/03/CITA-Smart-Pro-7.pdf" },
+    ],
   },
+  {
+    slug: "smart-7-eco",
+    name: "Smart 7 Eco",
+    category: "Residential",
+    powerOutput: "7.4kW",
+    heroHeadline: "Efficient Everyday Home Charging",
+    heroSubheadline: "Up to 7.4kW single-phase charging for homes and workplaces, built for durability.",
+    description: "The CITA Smart 7 Eco is a dependable home and workplace charger delivering up to 7.4kW of power for single-phase installations, with an integrated Type 2 socket. Engineered for durability and flexibility, the Smart 7 Eco connects seamlessly to cloud platforms for remote monitoring and management. With IP65 & IK10 protection and an extendable warranty, it delivers long-term reliability and peace of mind.",
+    benefits: [
+      "Up to 7.4kW Single-Phase Power",
+      "Integrated Type 2 Socket",
+      "Cloud Platform Connectivity",
+      "Durable Weatherproof Build",
+      "Smart Remote Management",
+      "IP65 & IK10 Protection",
+      "Extendable Warranty",
+    ],
+    targetApplications: ["Homes", "Villas", "Apartments", "Workplaces", "Gated Communities"],
+    imageUrl: "/products/Smart.png",
+    heroImageUrl: "/products/Smart 7.png",
+    gallery: [
+      { src: "/images/Smart%207%20ECO/10.jpg", label: "Product view" },
+      { src: "/images/Smart%207%20ECO/12.jpg", label: "Installed" },
+      { src: "/images/Smart%207%20ECO/28.jpg", label: "In use" },
+    ],
+    smartFeatures: acFeatures,
+    faqs: [
+      { q: "How much power does the Smart 7 Eco deliver?", a: "Up to 7.4kW on a single-phase supply." },
+      { q: "Does it connect to cloud platforms?", a: "Yes. The Smart 7 Eco connects seamlessly to cloud platforms for remote monitoring and management." },
+      { q: "Is it suitable for outdoor installation?", a: "Yes, with IP65 & IK10 protection it is built for outdoor durability." },
+    ],
+    comparisonTable: [
+      { name: "CITA SMART 7 ECO", protection: "IP65 & IK10", smartApp: true, mounting: "Wall mounted", rfid: true, touchScreen: false, compatibleAll: true, warranty: "3 Years (extendable)", cable: "Type 2 / 5m cable", datasheet: "Download" },
+    ],
+  },
+  {
+    slug: "smart-7-pro",
+    name: "Smart 7 Pro",
+    category: "Residential",
+    powerOutput: "7kW",
+    heroHeadline: "Premium Home & Workplace Charging",
+    heroSubheadline: "Up to 7kW single-phase charging with a lockable Type 2 socket and cloud control.",
+    description: "The CITA Smart 7 Pro is a compact yet powerful EV charger, ideal for home and workplace use. It delivers up to 7kW of power for single-phase installations and includes an integrated Type 2 socket with locking. Built for flexibility and long-term performance, the Smart 7 Pro connects effortlessly to cloud platforms and, with IP65 & IK10 protection and an extendable warranty, offers dependable performance, safety and peace of mind.",
+    benefits: [
+      "Up to 7kW Single-Phase Power",
+      "Lockable Type 2 Socket",
+      "Cloud Platform Control",
+      "RCD Protection Built-In",
+      "Smart Scheduling & Monitoring",
+      "IP65 & IK10 Protection",
+      "Extendable Warranty",
+    ],
+    targetApplications: ["Homes", "Villas", "Workplaces", "Apartments", "Small Businesses"],
+    imageUrl: "/products/Smart 7.png",
+    heroImageUrl: "/products/Side-view-7.png",
+    gallery: [
+      { src: "/images/Smart%207%20Pro/15.jpg", label: "Product view" },
+      { src: "/images/Smart%207%20Pro/22.jpg", label: "Installed" },
+      { src: "/images/Smart%207%20Pro/23.jpg", label: "In use" },
+    ],
+    smartFeatures: acFeatures,
+    faqs: [
+      { q: "Does the Smart 7 Pro have a lockable socket?", a: "Yes, it includes an integrated Type 2 charging socket with locking." },
+      { q: "What safety protection is built in?", a: "It includes RCD protection along with IP65 & IK10 ratings and multiple safety mechanisms." },
+      { q: "Can I control it remotely?", a: "Yes, it connects to cloud platforms for scheduling, monitoring and remote management." },
+    ],
+    comparisonTable: [
+      { name: "CITA SMART 7 PRO", protection: "IP65 & IK10", smartApp: true, mounting: "Wall mounted", rfid: true, touchScreen: false, compatibleAll: true, warranty: "3 Years (extendable)", cable: "Lockable Type 2 socket", datasheet: "Download" },
+    ],
+  },
+  /* ================= COMMERCIAL ================= */
   {
     slug: "smart-22",
     name: "Smart 22",
     category: "Commercial",
     powerOutput: "22kW",
-    heroHeadline: "Intelligent Commercial Charging",
-    heroSubheadline: "22kW smart charging solution designed for modern commercial properties.",
-    description: "The CITA Smart 22 is engineered for commercial environments requiring dependable charging performance and advanced energy management. Designed for workplaces, commercial developments, residential towers and hospitality venues, the Smart 22 combines powerful charging capability with intelligent connectivity. Its smart management features allow operators to control access, monitor usage and optimize charging performance through centralized software platforms. The Smart 22 provides an ideal balance between charging speed, operational efficiency and long-term scalability.",
+    heroHeadline: "Commercial Charging Solution with IP65 Ratings",
+    heroSubheadline: "Fast 22kW three-phase charging for commercial properties and workplaces.",
+    description: "The CITA Smart 22 commercial charger provides fast charging to an electric vehicle using the charger's on-board three-phase supply. Designed with a Type 2 charging socket, the charger is compatible with either Type 1, Type 2 or GB/T cables. Compliant with industrial standards, the charger uses a built-in RCD for protection and delivers up to 22kW of power. It carries IP65 & IK10 ratings and comes with a three-year warranty.",
     benefits: [
-      "Professional Charging Experience",
+      "22kW Three-Phase Power",
+      "Type 2 Socket, Multi-Cable Compatible",
+      "Built-In RCD Protection",
       "Smart User Authentication",
-      "Remote Management",
-      "Energy Monitoring",
-      "Future Expansion Ready",
-      "Commercial Revenue Potential",
-      "Enhanced Property Value"
+      "Remote Management & Monitoring",
+      "IP65 & IK10 Protection",
+      "3-Year Warranty",
     ],
-    targetApplications: [
-      "Corporate Offices", "Business Parks", "Hotels", "Hospitals", "Shopping Centers", "Universities", "Residential Towers", "Commercial Parking Facilities"
-    ],
+    targetApplications: ["Corporate Offices", "Business Parks", "Hotels", "Shopping Centers", "Residential Towers", "Commercial Parking"],
     imageUrl: "/products/Smart-22-Transparent.png",
     heroImageUrl: "/products/Smart-22-Hero.png",
-    faqs: [
-      { q: "Can charging sessions be monitored remotely?", a: "Yes." },
-      { q: "Can multiple users access the charger?", a: "Yes through RFID authorization." },
-      { q: "Is billing software supported?", a: "Yes through OCPP-compatible platforms." }
+    gallery: [
+      { src: "/images/Smart%2022%20Ultra/14.jpg", label: "Product view" },
+      { src: "/images/Smart%2022%20Ultra/21.jpg", label: "Installed" },
+      { src: "/images/Smart%2022%20Ultra/33.jpg", label: "In use" },
     ],
     datasheetUrl: "https://citaevcharger.co.uk/wp-content/uploads/2025/03/CITA-Smart-Pro-22.pdf",
+    smartFeatures: acFeatures,
+    faqs: [
+      { q: "What power does the Smart 22 deliver?", a: "Up to 22kW using an on-board three-phase supply." },
+      { q: "Which cables is it compatible with?", a: "It works with Type 1, Type 2 or GB/T cables through its Type 2 socket." },
+      { q: "Is it certified for commercial use?", a: "Yes, it is IP65 & IK10 rated, uses a built-in RCD and carries a 3-year warranty." },
+    ],
     comparisonTable: [
-      {
-        name: "CITA SMART PRO 22KW",
-        protection: "IP65 & IK10",
-        smartApp: true,
-        mounting: "On a wall & on a pole",
-        rfid: true,
-        touchScreen: false,
-        compatibleAll: true,
-        warranty: "3 Years",
-        cable: "Type 2 Charging Cable 5 Meters",
-        datasheet: "Download",
-        datasheetUrl: "https://citaevcharger.co.uk/wp-content/uploads/2025/03/CITA-Smart-Pro-22.pdf"
-      },
-      {
-        name: "CITA SMART 22KW ULTRA",
-        protection: "IP54 & IK10",
-        smartApp: true,
-        mounting: "On a wall & on a pole",
-        rfid: true,
-        touchScreen: true,
-        compatibleAll: true,
-        warranty: "3 Years",
-        cable: "Tethered Type 2, 5 meters cable",
-        datasheet: "Download",
-        datasheetUrl: "https://citaevcharger.co.uk/wp-content/uploads/2025/03/CITA-Ultra-Smart-22-Datasheet.pdf"
-      },
-      {
-        name: "CITA SMART 22KW ECO",
-        protection: "IP65 & IK10",
-        smartApp: true,
-        mounting: "On a wall & on a pole",
-        rfid: true,
-        touchScreen: false,
-        compatibleAll: true,
-        warranty: "3 Years",
-        cable: "Tethered Type 2, 5 meters cable",
-        datasheet: "Download",
-        datasheetUrl: "https://citaevcharger.co.uk/wp-content/uploads/2025/03/CITA-Smart-ECO-22.pdf"
-      }
+      { name: "CITA SMART 22", protection: "IP65 & IK10", smartApp: true, mounting: "Wall & pole", rfid: true, touchScreen: false, compatibleAll: true, warranty: "3 Years", cable: "Type 2 socket (Type 1/2/GB-T)", datasheet: "Download", datasheetUrl: "https://citaevcharger.co.uk/wp-content/uploads/2025/03/CITA-Smart-Pro-22.pdf" },
+    ],
+  },
+  {
+    slug: "smart-22-eco",
+    name: "Smart 22 Eco",
+    category: "Commercial",
+    powerOutput: "22kW",
+    heroHeadline: "High-Performance Compact Commercial Charging",
+    heroSubheadline: "Up to 22kW three-phase charging for both workplace and home environments.",
+    description: "The CITA Smart 22 Eco charger offers a high-performance, compact solution for both home and workplace EV charging needs. Delivering up to 22kW of power on three-phase installations, it combines intelligent connectivity with a durable, weatherproof design. Cloud and app integration allow operators to monitor usage and manage access, while IP65 & IK10 protection ensures reliable performance in demanding environments.",
+    benefits: [
+      "Up to 22kW Three-Phase Power",
+      "Compact Commercial Design",
+      "App & Cloud Integration",
+      "RFID Access Control",
+      "Energy Monitoring",
+      "IP65 & IK10 Protection",
+      "Extendable Warranty",
+    ],
+    targetApplications: ["Workplaces", "Retail", "Hospitality", "Residential Towers", "Business Parks"],
+    imageUrl: "/products/Smart.png",
+    heroImageUrl: "/products/Smart-22-Hero.png",
+    gallery: [
+      { src: "/images/Smart%2022%20ECO/2.jpg", label: "Product view" },
+      { src: "/images/Smart%2022%20ECO/5.jpg", label: "Installed" },
+      { src: "/images/Smart%2022%20ECO/18.jpg", label: "In use" },
+    ],
+    smartFeatures: acFeatures,
+    faqs: [
+      { q: "How much power does the Smart 22 Eco provide?", a: "Up to 22kW on a three-phase installation." },
+      { q: "Is it suitable for both home and workplace?", a: "Yes, its compact high-performance design suits both home and workplace charging." },
+      { q: "Does it support access control?", a: "Yes, with RFID authentication and app/cloud management." },
+    ],
+    comparisonTable: [
+      { name: "CITA SMART 22 ECO", protection: "IP65 & IK10", smartApp: true, mounting: "Wall & pole", rfid: true, touchScreen: false, compatibleAll: true, warranty: "3 Years (extendable)", cable: "Type 2 / 5m cable", datasheet: "Download" },
+    ],
+  },
+  {
+    slug: "smart-22-pro",
+    name: "Smart 22 Pro",
+    category: "Commercial",
+    powerOutput: "22kW",
+    heroHeadline: "Premium Commercial 22kW Charging",
+    heroSubheadline: "Up to 22kW three-phase charging with advanced smart management and security.",
+    description: "The CITA Smart 22 Pro is a premium commercial charger delivering up to 22kW on three-phase installations. Built for professional deployments, it combines robust construction with advanced smart-management features including RFID access, energy metering, OCPP connectivity and full remote control. IP65 & IK10 rated, it is designed for reliable, high-utilisation charging across workplaces, retail and public sites.",
+    benefits: [
+      "Up to 22kW Three-Phase Power",
+      "Advanced Smart Management",
+      "RFID & App Access Control",
+      "MID-Certified Metering",
+      "OCPP Networked Charging",
+      "IP65 & IK10 Protection",
+      "Extendable Warranty",
+    ],
+    targetApplications: ["Corporate Offices", "Retail & Malls", "Hotels", "Public Parking", "Business Parks"],
+    imageUrl: "/products/Smart-22-Transparent.png",
+    heroImageUrl: "/products/Smart-22-Hero.png",
+    gallery: [
+      { src: "/images/Smart%2022%20Pro/16.jpg", label: "Product view" },
+      { src: "/images/Smart%2022%20Pro/25.jpg", label: "Installed" },
+      { src: "/images/Smart%2022%20Pro/27.jpg", label: "In use" },
+    ],
+    smartFeatures: acFeatures,
+    faqs: [
+      { q: "What makes the Smart 22 Pro different?", a: "It adds advanced smart-management, MID-certified metering and OCPP networking on top of 22kW three-phase charging." },
+      { q: "Can it be networked across a site?", a: "Yes, via OCPP 1.6 for centralised management and billing." },
+      { q: "Is it suitable for high-utilisation sites?", a: "Yes, its robust IP65 & IK10 build is designed for reliable, high-utilisation charging." },
+    ],
+    comparisonTable: [
+      { name: "CITA SMART 22 PRO", protection: "IP65 & IK10", smartApp: true, mounting: "Wall & pole", rfid: true, touchScreen: true, compatibleAll: true, warranty: "3 Years (extendable)", cable: "Tethered Type 2, 5m", datasheet: "Download" },
+    ],
+  },
+  {
+    slug: "smart-44-gen-3",
+    name: "Smart 44",
+    category: "Commercial",
+    powerOutput: "44kW (2x22kW)",
+    heroHeadline: "2 x 22kW Mode 3 AC Charger",
+    heroSubheadline: "44kW dual-vehicle commercial charging engineered for high-demand environments.",
+    description: "The CITA Smart 44 is a 44kW AC commercial EV charger engineered for high-demand environments, including commercial fleets, public transport depots and workplace charging facilities. Built to industrial standards, it delivers reliable dual-vehicle charging with independent, fully isolated control and power circuits. Designed for scalability, multiple Smart 44 chargers can be networked at a single site with just one internet connection, making it ideal for public or commercial infrastructure projects. It operates from -30°C to 55°C for long-term peace of mind.",
+    benefits: [
+      "Charge 2 EVs Simultaneously",
+      "2 x 22kW Mode 3 AC",
+      "Fully Isolated Control & Power Circuits",
+      "Networkable on One Connection",
+      "7-inch Interactive Touchscreen",
+      "IP65 & IK10 Protection",
+      "-30°C to 55°C Operation",
+    ],
+    targetApplications: ["Commercial Fleets", "Public Transport Depots", "Workplaces", "Apartment Complexes", "Public Charging Stations"],
+    imageUrl: "/products/New-44-Front.png",
+    heroImageUrl: "/products/Urbanfox-44kw.png",
+    gallery: [
+      { src: "/products/New-44-Front.png", label: "Front view" },
+      { src: "/products/Urbanfox-44kw.png", label: "Pedestal mount" },
+      { src: "/products/Old-44-Front.png", label: "Dual sockets" },
     ],
     smartFeatures: [
-      { title: "Access with mobile app via WiFi /4G/ Ethernet", icon: "smartphone" },
-      { title: "Up to 3 years warranty (extendable)", icon: "award" },
+      { title: "Access with mobile app via WiFi / 4G / Ethernet", icon: "smartphone" },
+      { title: "Charge 2 EVs at once with up to 22kW AC each", icon: "activity" },
+      { title: "7-inch interactive touch screen", icon: "smartphone" },
       { title: "RFID access for instant command", icon: "nfc" },
-      { title: "Compatible with all type 2 charging cables", icon: "plug" },
-      { title: "PME fault detection", icon: "alert-triangle" },
-      { title: "MID-certified energy meter", icon: "zap" },
-      { title: "Active & Dynamic Load Balancing", icon: "activity" },
+      { title: "Fully isolated control & power circuits", icon: "shield" },
       { title: "OCPP 1.6 JSON integration", icon: "server" },
-      { title: "Built-in 4G router", icon: "wifi" },
-      { title: "Modbus Integration to Solar PV & Smart System", icon: "sun" },
-      { title: "IP65 and IK10 Rated EV Charger", icon: "shield" }
-    ]
+    ],
+    faqs: [
+      { q: "How many EVs can the Smart 44 charge at once?", a: "Two, at up to 22kW per vehicle, with independent fully isolated circuits." },
+      { q: "Can multiple units be networked?", a: "Yes. Multiple Smart 44 chargers can be networked at one site with a single internet connection." },
+      { q: "What environments is it built for?", a: "High-demand commercial fleets, public transport depots and workplaces, operating from -30°C to 55°C." },
+    ],
+    comparisonTable: [
+      { name: "CITA SMART 44", protection: "IP65 & IK10", smartApp: true, mounting: "Wall & pedestal", rfid: true, touchScreen: true, compatibleAll: true, warranty: "3 Years", cable: "2x Type 2 tethered, 5m", datasheet: "Download" },
+    ],
+  },
+  /* ================= DC FAST ================= */
+  {
+    slug: "smart-dc-30",
+    name: "Smart 30 DC",
+    category: "DC Fast",
+    powerOutput: "30kW DC",
+    heroHeadline: "Compact 30kW DC Fast Charger",
+    heroSubheadline: "Reliable DC fast charging for commercial and light public locations.",
+    description: "The CITA Smart 30 DC is a compact DC fast charger delivering up to 30kW of output. It supports CCS2, CHAdeMO (IEC) or GB/T (20234.3) compatible electric vehicles and connects via 4G or Ethernet for remote monitoring and management. With over-current and residual current protection, a touchscreen interface and OCPP connectivity, it is an efficient DC charging solution for commercial sites and light public charging without complex infrastructure.",
+    benefits: [
+      "Up to 30kW DC Output",
+      "CCS2 / CHAdeMO / GB-T Support",
+      "4G & Ethernet Connectivity",
+      "Over-Current & Residual Current Protection",
+      "Touchscreen Interface",
+      "OCPP Networked Charging",
+      "Compact Footprint",
+    ],
+    targetApplications: ["Commercial Sites", "Fleet Depots", "Parking Facilities", "Retail Locations", "Light Public Charging"],
+    imageUrl: "/products/DC-30.png",
+    heroImageUrl: "/products/New-DC-2026-Design.png",
+    gallery: [
+      { src: "/products/DC-30.png", label: "Front view" },
+      { src: "/products/New-DC-2026-Design.png", label: "2026 design" },
+      { src: "/products/CITA-EV-DC-Charger.png", label: "DC charging" },
+    ],
+    smartFeatures: [
+      { title: "Up to 30kW DC output", icon: "zap" },
+      { title: "CCS2 / CHAdeMO / GB-T support", icon: "plug" },
+      { title: "4G / Ethernet connectivity", icon: "wifi" },
+      { title: "Over-current & residual current protection", icon: "alert-triangle" },
+      { title: "Touchscreen user interface", icon: "smartphone" },
+      { title: "OCPP integration", icon: "server" },
+    ],
+    faqs: [
+      { q: "What is the Smart 30 DC output?", a: "Up to 30kW DC, suitable for compatible CCS2, CHAdeMO or GB/T vehicles." },
+      { q: "How does it connect?", a: "Via 4G or Ethernet for remote monitoring, diagnostics and management." },
+      { q: "What protection does it include?", a: "Over-current protection and residual current protection, with a durable outdoor-rated build." },
+    ],
+    comparisonTable: [
+      { name: "CITA SMART 30 DC", protection: "IP54 & IK10", smartApp: true, mounting: "Floor / wall", rfid: true, touchScreen: true, compatibleAll: true, warranty: "2 Years", cable: "CCS2 tethered", datasheet: "Download" },
+    ],
   },
   {
     slug: "smart-80-dc",
     name: "Smart 80 DC",
     category: "DC Fast",
     powerOutput: "80kW DC",
-    heroHeadline: "Designed For High-Traffic Charging Locations",
-    heroSubheadline: "Serve more vehicles with powerful 80kW DC charging technology.",
-    description: "The Smart 80 DC is ideal for businesses expecting consistent charging demand. Its ability to support multiple outputs makes it suitable for busy locations where customer convenience and operational efficiency are priorities. The charger is equipped with modern payment systems, intelligent charging controls and advanced monitoring capabilities.",
+    heroHeadline: "80kW DC Fast Charger for High-Demand Sites",
+    heroSubheadline: "Charge up to four EVs at once with new-generation 40kW power modules.",
+    description: "The CITA Smart 80 DC Fast Charger is designed for fast, reliable EV charging in high-demand locations. Built with new-generation 40kW power modules, it delivers stable performance and smart power distribution while supporting simultaneous charging for up to four EVs (2× DC + 2× AC). This makes it a practical choice for commercial sites, fuel stations, fleet depots and public charging hubs that need high throughput and dependable uptime.",
     benefits: [
-      "Higher Throughput",
-      "More Charging Sessions",
-      "Reduced Waiting Times",
-      "Higher Revenue Potential",
-      "Improved Customer Satisfaction",
-      "Commercial Scalability"
+      "80kW DC Output",
+      "New-Generation 40kW Power Modules",
+      "Charge up to 4 EVs (2xDC + 2xAC)",
+      "Smart Power Distribution",
+      "Payment & Access Integration",
+      "Robust Outdoor-Rated Build",
+      "OCPP Networked Charging",
     ],
-    targetApplications: [
-      "Motorway Service Areas", "Fuel Stations", "Fleet Depots", "Commercial Charging Hubs", "Shopping Malls", "Government Projects"
-    ],
-    imageUrl: "https://citaevcharger.co.uk/wp-content/uploads/2024/11/Group-2426.png",
-    faqs: [
-      { q: "Can multiple vehicles charge simultaneously?", a: "Yes." },
-      { q: "Is payment integration supported?", a: "Yes." },
-      { q: "Does it support OCPP?", a: "Yes." }
-    ],
-    datasheetUrl: "https://citaevcharger.co.uk/wp-content/uploads/2025/03/CITA-Smart-80-DC.pdf",
-    smartFeatures: [
-      { title: "Simultaneous multi-vehicle charging", icon: "activity" },
-      { title: "Integrated payment systems", icon: "nfc" },
-      { title: "OCPP 1.6 JSON integration", icon: "server" },
-      { title: "Built-in 4G / Ethernet connectivity", icon: "wifi" },
-      { title: "MID-certified DC/AC energy meter", icon: "zap" },
-      { title: "IP54 & IK10 rated construction", icon: "shield" },
-      { title: "Large LCD touchscreen interface", icon: "smartphone" },
-      { title: "RFID authentication", icon: "plug" }
-    ]
-  },
-  {
-    slug: "smart-11",
-    name: "Smart 11",
-    category: "Residential",
-    powerOutput: "11kW",
-    heroHeadline: "Elevate Your EV Charging Experience",
-    heroSubheadline: "11kW Mode 3 AC charger with smart connectivity, ideal for home and workplace charging.",
-    description: "Engineered for efficiency and convenience, the CITA Smart 11 delivers faster charging times and seamless integration with smart home systems. This wall-mount AC charger is ideal for both home and workplace use, charging nearly 60% faster than a 7kW charger while balancing charging speed and energy efficiency. Featuring ADQCC, SASO, UKCA and CE approvals, it combines fast charging, smart connectivity and a durable IP65-rated, weather-resistant design.",
-    benefits: [
-      "Fast Charging",
-      "User-Friendly Interface",
-      "Smart Connectivity",
-      "Durable IP65 Design",
-      "Energy Efficiency",
-      "Remote Monitoring & Scheduling",
-      "3-Year Extendable Warranty"
-    ],
-    targetApplications: [
-      "Private Residences", "Apartments", "Offices", "Shopping Malls", "Public Parking Areas", "Workplaces"
-    ],
-    imageUrl: "/products/Smart.png",
-    faqs: [
-      { q: "What is the charging speed of the Smart 11kW charger?", a: "It charges nearly 60% faster than 7kW chargers, delivering approximately 38-40 miles of range per hour depending on the vehicle model and battery capacity." },
-      { q: "Is it compatible with all electric vehicles?", a: "Yes, it works with most EVs using the standard Type 2 connector, including Tesla, Nissan, BMW, Audi, Mercedes, Hyundai and Kia." },
-      { q: "Can it be installed indoors and outdoors?", a: "Yes. Its robust, weather-resistant IP65 casing makes it suitable for both indoor and outdoor installation." }
+    targetApplications: ["Fuel Stations", "Commercial Charging Hubs", "Fleet Depots", "Motorway Service Areas", "Shopping Malls", "Government Projects"],
+    imageUrl: "/products/New-DC-Pro.png",
+    heroImageUrl: "/products/CITA-Smart-DC---60kW-to-180kW-DC---01.png",
+    gallery: [
+      { src: "/products/New-DC-Pro.png", label: "Front view" },
+      { src: "/products/CITA-Smart-DC---60kW-to-180kW-DC---01.png", label: "High-power unit" },
+      { src: "/products/New-DC-2026-Design-2.png", label: "Charging hub" },
     ],
     smartFeatures: [
-      { title: "Access with mobile app via WiFi /4G/ Ethernet", icon: "smartphone" },
-      { title: "Up to 3 years warranty (extendable)", icon: "award" },
-      { title: "RFID access for instant command", icon: "nfc" },
-      { title: "Compatible with all type 2 charging cables", icon: "plug" },
-      { title: "PME fault detection", icon: "alert-triangle" },
-      { title: "MID-certified energy meter", icon: "zap" },
-      { title: "Active & Dynamic Load Balancing", icon: "activity" },
-      { title: "OCPP 1.6 JSON integration", icon: "server" },
-      { title: "Built-in 4G router", icon: "wifi" },
-      { title: "Modbus Integration to Solar PV & Smart System", icon: "sun" }
+      { title: "80kW DC output with 40kW power modules", icon: "zap" },
+      { title: "Charge up to 4 EVs (2x DC + 2x AC)", icon: "activity" },
+      { title: "Smart power distribution", icon: "sun" },
+      { title: "Payment & RFID access integration", icon: "nfc" },
+      { title: "4G / Ethernet connectivity", icon: "wifi" },
+      { title: "OCPP integration", icon: "server" },
+    ],
+    faqs: [
+      { q: "How many EVs can the Smart 80 DC charge at once?", a: "Up to four simultaneously - two DC and two AC outputs." },
+      { q: "What power modules does it use?", a: "New-generation 40kW power modules for stable performance and smart power distribution." },
+      { q: "Where is it best deployed?", a: "High-demand sites such as fuel stations, fleet depots and commercial charging hubs." },
     ],
     comparisonTable: [
-      { name: "CITA SMART PRO 11KW", protection: "IP65 & IK10", smartApp: true, mounting: "On a wall & on a pole", rfid: true, touchScreen: false, compatibleAll: true, warranty: "3 Years", cable: "Type 2 Charging Cable 5 Meters", datasheet: "Download" },
-      { name: "CITA SMART 11KW ULTRA", protection: "IP54 & IK10", smartApp: true, mounting: "On a wall & on a pole", rfid: true, touchScreen: true, compatibleAll: true, warranty: "3 Years", cable: "Tethered Type 2, 5 meters cable", datasheet: "Download" },
-      { name: "CITA SMART 11KW ECO", protection: "IP65 & IK10", smartApp: true, mounting: "On a wall & on a pole", rfid: true, touchScreen: false, compatibleAll: true, warranty: "3 Years", cable: "Tethered Type 2, 5 meters cable", datasheet: "Download" }
-    ]
+      { name: "CITA SMART 80 DC", protection: "IP54 & IK10", smartApp: true, mounting: "Floor standing", rfid: true, touchScreen: true, compatibleAll: true, warranty: "2 Years", cable: "2x CCS2 + 2x Type 2", datasheet: "Download" },
+    ],
   },
-  {
-    slug: "smart-44-gen-3",
-    name: "Smart 44 Gen 3",
-    category: "Commercial",
-    powerOutput: "44kW (2x22kW)",
-    heroHeadline: "Charge Two EVs at Once",
-    heroSubheadline: "2 x 22kW Mode 3 AC charger with 7-inch touchscreen and contactless payment, built for busy sites.",
-    description: "The new and improved CITA Smart 44 Gen 3 is a pedestal-mount dual AC charger that charges two EVs simultaneously at up to 22kW each. With intelligent load management distributing power efficiently between both ports, a 7-inch LCD touchscreen, POS contactless payment and OCPP 1.6 integration, it is ideal for apartment complexes, workplaces and public charging stations. Its IP65 and IK10 rated design ensures reliable performance in demanding environments.",
-    benefits: [
-      "Charge 2 EVs Simultaneously",
-      "Time Efficiency",
-      "Intelligent Load Management",
-      "7-inch LCD Touchscreen",
-      "Contactless POS Payment",
-      "Future-Proof for Larger Batteries",
-      "3-Year Extendable Warranty"
-    ],
-    targetApplications: [
-      "Apartment Complexes", "Workplaces", "Public Charging Stations", "Fleet Operations", "Retail & Malls", "Business Parks"
-    ],
-    imageUrl: "/products/New-44-Front.png",
-    faqs: [
-      { q: "How many EVs can it charge at once?", a: "Two - it charges two EVs simultaneously at up to 22kW per vehicle using intelligent load management." },
-      { q: "Can it be used for both residential and commercial installations?", a: "Yes. It is primarily built for commercial sites but also suits homes needing multiple charging points." },
-      { q: "Is it certified?", a: "Yes - UKCA, CE and ADQCC approved and OZEV grant approved, meeting strict safety and performance standards." }
-    ],
-    smartFeatures: [
-      { title: "Access with mobile app via WiFi /4G/ Ethernet", icon: "smartphone" },
-      { title: "Up to 3 years warranty (extendable)", icon: "award" },
-      { title: "Charge 2 EVs at once with up to 22kW AC", icon: "activity" },
-      { title: "7-inch LCD touch screen", icon: "smartphone" },
-      { title: "POS terminal contactless payment", icon: "nfc" },
-      { title: "MID-certified energy meter", icon: "zap" },
-      { title: "MCCB & RCD Protection", icon: "shield" },
-      { title: "OCPP 1.6 JSON integration", icon: "server" },
-      { title: "Built-in 4G router", icon: "wifi" },
-      { title: "Modbus Integration to Solar PV & Smart System", icon: "sun" }
-    ]
-  },
-  {
-    slug: "smart-dc-30",
-    name: "Smart DC 30",
-    category: "DC Fast",
-    powerOutput: "30kW DC",
-    heroHeadline: "Compact DC Fast Charging",
-    heroSubheadline: "A compact 30kW DC charger built for highways, fleets, parking facilities and public hubs.",
-    description: "The all-new CITA Smart DC 30 is a compact fast DC charger ideal for commercial and light public charging. Delivering up to 30kW, it can charge compatible CCS2 vehicles in under three hours. Built with IP55-rated protection, AC/DC residual current protection and a 10.4-inch LCD touchscreen, it supports OCPP 1.6 (upgradable to 2.0.1), 4G/Ethernet connectivity, RFID authentication, POS payment and QR-code access - reliable fast charging without complex infrastructure.",
-    benefits: [
-      "Compact Footprint",
-      "Fast DC Charging",
-      "MID DC/AC Meter",
-      "IP55 Rated Protection",
-      "10.4-inch LCD Touchscreen",
-      "RFID, POS & QR Access",
-      "OCPP 1.6 (Upgradable to 2.0.1)"
-    ],
-    targetApplications: [
-      "Highways", "Fleet Depots", "Parking Facilities", "Public Charging Hubs", "Commercial Sites", "Retail Locations"
-    ],
-    imageUrl: "/products/DC-30.png",
-    faqs: [
-      { q: "How many EVs can the Smart DC 30 charge at once?", a: "One at a time via a single DC gun, charging compatible CCS2 vehicles in under three hours at up to 30kW." },
-      { q: "What protection does it offer?", a: "IP55 protection against dust and water, IK10 impact resistance, and AC/DC residual current protection (RCD)." },
-      { q: "What access and payment options are supported?", a: "RFID card authentication, POS payment terminal integration and QR-code access for a smooth user experience." }
-    ],
-    smartFeatures: [
-      { title: "MID DC/AC energy meter", icon: "zap" },
-      { title: "IP55 rated protection", icon: "shield" },
-      { title: "OCPP 1.6 (upgradable to 2.0.1)", icon: "server" },
-      { title: "4G / Ethernet connectivity", icon: "wifi" },
-      { title: "AC/DC residual current protection (RCD)", icon: "alert-triangle" },
-      { title: "RFID authentication", icon: "nfc" },
-      { title: "POS payment terminal & QR access", icon: "plug" },
-      { title: "10.4-inch LCD touchscreen", icon: "smartphone" }
-    ]
-  },
-  {
-    slug: "dual-ecopillar",
-    name: "Dual EcoPillar",
-    category: "Commercial",
-    powerOutput: "2x22kW AC",
-    heroHeadline: "Dual-Port Pedestal Charging",
-    heroSubheadline: "Freestanding dual-socket AC pillar built for shared and public parking.",
-    description: "The CITA Dual EcoPillar is a freestanding pedestal AC charger designed for shared parking, workplaces and public spaces. With two charging sockets it serves two EVs at once, combining intelligent load management, RFID access and OCPP connectivity in a durable, weatherproof pillar. It is ideal for car parks, residential communities and commercial forecourts across Pakistan.",
-    benefits: [
-      "Dual-Socket Charging",
-      "Freestanding Pedestal Design",
-      "Intelligent Load Management",
-      "RFID User Access",
-      "OCPP Connectivity",
-      "Weatherproof IP-Rated Build",
-      "3-Year Extendable Warranty"
-    ],
-    targetApplications: [
-      "Car Parks", "Residential Communities", "Workplaces", "Commercial Forecourts", "Retail Sites", "Public Parking"
-    ],
-    imageUrl: "https://citaevcharger.com.pk/wp-content/uploads/2026/03/Untitled-design-56.png",
-    faqs: [
-      { q: "How many EVs can the Dual EcoPillar charge?", a: "Two at once, via its dual charging sockets with intelligent load balancing." },
-      { q: "Where is it best installed?", a: "Shared car parks, workplaces, residential communities and commercial forecourts." },
-      { q: "Does it support access control?", a: "Yes, RFID user authentication and OCPP backend integration." }
-    ],
-    smartFeatures: [
-      { title: "Dual-socket simultaneous charging", icon: "activity" },
-      { title: "Access with mobile app via WiFi /4G", icon: "smartphone" },
-      { title: "RFID user authentication", icon: "nfc" },
-      { title: "Compatible with all type 2 cables", icon: "plug" },
-      { title: "MID-certified energy meter", icon: "zap" },
-      { title: "OCPP 1.6 JSON integration", icon: "server" },
-      { title: "Intelligent load balancing", icon: "sun" },
-      { title: "Weatherproof IP-rated pedestal", icon: "shield" }
-    ]
-  },
-  {
-    slug: "smart-dc-eco",
-    name: "Smart DC ECO",
-    category: "DC Fast",
-    powerOutput: "80-160kW DC",
-    heroHeadline: "Scalable DC Fast Charging",
-    heroSubheadline: "80-160kW DC charging for commercial hubs, fleets and highways.",
-    description: "The CITA Smart DC ECO delivers scalable rapid charging from 80kW up to 160kW, built for commercial charging hubs, fleet depots and highway locations. With dual CCS2 outputs, dynamic power sharing, a large touchscreen, RFID and POS payment and OCPP connectivity, it serves high-demand sites efficiently. It is IP54/IK10 rated for durability in Pakistan's climate and backed by a 2-year extendable warranty.",
-    benefits: [
-      "80-160kW Scalable Output",
-      "Dual CCS2 Outputs",
-      "Dynamic Power Sharing",
-      "Touchscreen + RFID + POS",
-      "OCPP Connectivity",
-      "IP54 / IK10 Rated",
-      "2-Year Extendable Warranty"
-    ],
-    targetApplications: [
-      "Commercial Charging Hubs", "Fleet Depots", "Highways", "Fuel Stations", "Shopping Malls", "Government Projects"
-    ],
-    imageUrl: "https://citaevcharger.com.pk/wp-content/uploads/2026/03/New-DC-2026-Design-2-1-e1772542176389.png",
-    faqs: [
-      { q: "What power range does the DC ECO cover?", a: "From 80kW up to 160kW, scalable to match site demand." },
-      { q: "Can it charge two vehicles?", a: "Yes, with dual CCS2 outputs and dynamic power sharing between them." },
-      { q: "What warranty is included?", a: "A 2-year extendable warranty, standard on CITA DC chargers." }
-    ],
-    smartFeatures: [
-      { title: "Scalable 80-160kW output", icon: "activity" },
-      { title: "Dual CCS2 outputs", icon: "plug" },
-      { title: "Dynamic power sharing", icon: "zap" },
-      { title: "Touchscreen interface", icon: "smartphone" },
-      { title: "RFID & POS payment", icon: "nfc" },
-      { title: "OCPP connectivity", icon: "server" },
-      { title: "4G / Ethernet connectivity", icon: "wifi" },
-      { title: "IP54 & IK10 rated", icon: "shield" }
-    ]
-  },
-  {
-    slug: "smart-dc-pro",
-    name: "Smart DC PRO",
-    category: "DC Fast",
-    powerOutput: "200-480kW DC",
-    heroHeadline: "Ultra-Rapid DC Charging",
-    heroSubheadline: "200-480kW ultra-fast charging for highways, fleets and public charging hubs.",
-    description: "The CITA Smart DC PRO is a high-power ultra-rapid charger delivering 200kW up to 480kW for the most demanding public and fleet applications. Engineered for motorway service areas, large fleet depots and flagship charging hubs, it supports multiple simultaneous outputs, dynamic load management, contactless payment and full OCPP connectivity. Its rugged IP54/IK10 construction ensures reliable performance under heavy use, with a 2-year extendable warranty.",
-    benefits: [
-      "200-480kW Ultra-Rapid",
-      "Multiple Simultaneous Outputs",
-      "Dynamic Load Management",
-      "Contactless Payment",
-      "OCPP Connectivity",
-      "Rugged IP54 / IK10 Build",
-      "2-Year Extendable Warranty"
-    ],
-    targetApplications: [
-      "Motorway Service Areas", "Large Fleet Depots", "Flagship Charging Hubs", "Fuel Stations", "Logistics Centers", "Government Infrastructure"
-    ],
-    imageUrl: "https://citaevcharger.com.pk/wp-content/uploads/2026/03/New-DC-Pro-e1772542547882.png",
-    faqs: [
-      { q: "How much power does the DC PRO deliver?", a: "From 200kW up to 480kW, for ultra-rapid high-demand charging." },
-      { q: "What sites is it designed for?", a: "Motorway service areas, large fleet depots and flagship public charging hubs." },
-      { q: "Does it support simultaneous charging?", a: "Yes, multiple outputs with dynamic load management." }
-    ],
-    smartFeatures: [
-      { title: "Ultra-rapid 200-480kW output", icon: "activity" },
-      { title: "Multiple simultaneous outputs", icon: "plug" },
-      { title: "Dynamic load management", icon: "zap" },
-      { title: "Contactless payment", icon: "nfc" },
-      { title: "OCPP connectivity", icon: "server" },
-      { title: "4G / Ethernet connectivity", icon: "wifi" },
-      { title: "Large touchscreen interface", icon: "smartphone" },
-      { title: "Rugged IP54 & IK10 build", icon: "shield" }
-    ]
-  },
+  /* ================= SOFTWARE ================= */
   {
     slug: "cita-ev-app",
     name: "CITA EV App",
@@ -447,16 +403,14 @@ export const productsData: ProductData[] = [
       "Energy Usage Analytics",
       "Remote Control",
       "iOS & Android",
-      "Works with CITA Home Chargers"
+      "Works with CITA Home Chargers",
     ],
-    targetApplications: [
-      "Home EV Owners", "Apartment Residents", "Workplace Users", "Fleet Drivers"
-    ],
+    targetApplications: ["Home EV Owners", "Apartment Residents", "Workplace Users", "Fleet Drivers"],
     imageUrl: "https://citaevcharger.com.pk/wp-content/uploads/2025/12/smart-ev-app-solutions-for-all-chargers.png",
     faqs: [
       { q: "Which chargers work with the CITA EV App?", a: "The app works seamlessly with CITA home EV chargers for monitoring and control." },
       { q: "Is the app available on iOS and Android?", a: "Yes, it is available on both the App Store and Google Play." },
-      { q: "What can I do with the app?", a: "Locate stations, start and schedule charging, monitor usage and optimise energy efficiency." }
+      { q: "What can I do with the app?", a: "Locate stations, start and schedule charging, monitor usage and optimise energy efficiency." },
     ],
     smartFeatures: [
       { title: "Locate charging stations", icon: "smartphone" },
@@ -464,8 +418,8 @@ export const productsData: ProductData[] = [
       { title: "Real-time charging monitoring", icon: "zap" },
       { title: "Energy usage analytics", icon: "server" },
       { title: "Remote start/stop control", icon: "wifi" },
-      { title: "Available on iOS & Android", icon: "plug" }
-    ]
+      { title: "Available on iOS & Android", icon: "plug" },
+    ],
   },
   {
     slug: "cita-cpms",
@@ -482,16 +436,14 @@ export const productsData: ProductData[] = [
       "Energy & Usage Analytics",
       "Billing & Revenue Management",
       "Manages Both AC & DC",
-      "Scalable Across Locations"
+      "Scalable Across Locations",
     ],
-    targetApplications: [
-      "Offices", "Residential Communities", "Fleet Operators", "Public Charging Networks", "Retail & Hospitality", "Government Projects"
-    ],
+    targetApplications: ["Offices", "Residential Communities", "Fleet Operators", "Public Charging Networks", "Retail & Hospitality", "Government Projects"],
     imageUrl: "https://citaevcharger.com.pk/wp-content/uploads/2026/01/CPMS@2x.png",
     faqs: [
       { q: "Does CPMS support multiple chargers at one location?", a: "Yes, it manages multiple chargers from one central dashboard, ideal for offices, communities, fleets and public sites." },
       { q: "Can I control user access?", a: "Yes, administrators can assign permissions, manage RFID cards and track charging sessions." },
-      { q: "Does it manage both AC and DC chargers?", a: "Yes, CPMS manages both AC and DC chargers from a single system." }
+      { q: "Does it manage both AC and DC chargers?", a: "Yes, CPMS manages both AC and DC chargers from a single system." },
     ],
     smartFeatures: [
       { title: "Central multi-charger dashboard", icon: "server" },
@@ -499,11 +451,11 @@ export const productsData: ProductData[] = [
       { title: "User & RFID access control", icon: "nfc" },
       { title: "Energy & usage analytics", icon: "zap" },
       { title: "Billing & revenue management", icon: "award" },
-      { title: "Manages both AC & DC chargers", icon: "plug" }
-    ]
-  }
+      { title: "Manages both AC & DC chargers", icon: "plug" },
+    ],
+  },
 ];
 
 export function getProductBySlug(slug: string): ProductData | undefined {
-  return productsData.find(p => p.slug === slug);
+  return productsData.find((p) => p.slug === slug);
 }

@@ -1,0 +1,264 @@
+.page {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--background-white);
+  color: var(--text-primary);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 150px 24px 75px;
+  background-image: url('/images/hero_bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5, 14, 29, 0.96) 0%, rgba(5, 14, 29, 0.78) 100%);
+  z-index: 1;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+}
+
+.heroContent {
+  max-width: 720px;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: #00D46A;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  background: linear-gradient(to right, #ffffff, #00D46A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+/* GRID */
+.gridSection {
+  padding: 90px 24px;
+}
+
+.gridContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  height: 100%;
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #eefaf2;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cardLink:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 212, 106, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 212, 106, 0.12);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  height: 210px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.catBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #00D46A;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 26px 26px 30px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.metaDot {
+  color: var(--border-color);
+}
+
+.metaTime {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+.cardExcerpt {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #00D46A;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: gap 0.3s ease;
+}
+
+.cardLink:hover .readMore {
+  gap: 14px;
+}
+
+/* CTA */
+.ctaSection {
+  padding: 40px 24px 120px;
+}
+
+.ctaCard {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(0, 212, 106, 0.12), rgba(0, 212, 106, 0.03));
+  border: 1px solid rgba(0, 212, 106, 0.25);
+  border-radius: 28px;
+  padding: 70px 40px;
+}
+
+.ctaTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.ctaText {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 auto 36px;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.ctaPrimary {
+  background: #00D46A;
+  color: #ffffff;
+}
+
+.ctaPrimary:hover {
+  background: #00b85c;
+  transform: translateY(-2px);
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--primary-color);
+}
+
+.ctaSecondary:hover {
+  border-color: #00D46A;
+  color: #00D46A;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .ctaCard {
+    padding: 50px 24px;
+  }
+  .ctaTitle {
+    font-size: 1.75rem;
+  }
+}

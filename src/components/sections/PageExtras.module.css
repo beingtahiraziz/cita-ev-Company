@@ -1,0 +1,125 @@
+/* TRUST BAND */
+.trustSection {
+  padding: 30px 24px;
+}
+
+.trustBand {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  background: linear-gradient(135deg, rgba(0, 212, 106, 0.08), rgba(0, 212, 106, 0.02));
+  border: 1px solid rgba(0, 212, 106, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+  text-align: left;
+}
+
+.trustIcon {
+  color: #00D46A;
+  flex-shrink: 0;
+  display: flex;
+}
+
+.trustLabel {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* WHY / FEATURES */
+.whySection {
+  padding: 80px 24px;
+}
+
+.whyAlt {
+  background: var(--background-light);
+}
+
+.whyContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.whyHeader {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 50px;
+}
+
+.whyTitle {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+.whySubtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.whyCard {
+  background: #eefaf2;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 34px 28px;
+  transition: all 0.3s ease;
+}
+
+.whyCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 212, 106, 0.35);
+  box-shadow: 0 12px 30px rgba(0, 212, 106, 0.1);
+}
+
+.whyNum {
+  width: 52px;
+  height: 52px;
+  background: rgba(0, 212, 106, 0.1);
+  color: #00D46A;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.whyCardTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.whyCardText {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .whySection {
+    padding: 60px 24px;
+  }
+  .whyTitle {
+    font-size: 1.75rem;
+  }
+}

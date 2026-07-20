@@ -391,11 +391,11 @@ export default function Home() {
               </motion.div>
               <motion.div className={styles.categoryCard} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUpVariant}>
                 <div className={styles.categoryImageWrapper}>
-                  <Image unoptimized src="/products/CITA-EV-DC-Charger.png" alt="Smart 80 DC" fill className={styles.categoryImage} style={{ objectFit: 'contain' }} />
+                  <Image unoptimized src="/products/New-DC-Pro.png" alt="Smart 80 DC" fill className={styles.categoryImage} style={{ objectFit: 'contain' }} />
                 </div>
                 <div className={styles.categoryContent}>
                   <h3>Smart 80 DC</h3>
-                  <p>80kW dual-gun fast charger for highways and fleets.</p>
+                  <p>80kW DC fast charger that charges up to four EVs at once.</p>
                   <Button variant="outlineWhite" size="sm" href="/products/smart-80-dc">View Details</Button>
                 </div>
               </motion.div>
@@ -568,7 +568,7 @@ export default function Home() {
             <p>Contact our team today for a free consultation or custom quotation for your project.</p>
             <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Button variant="primary" size="lg" href="/contact">Request A Quote</Button>
-              <Button variant="outlineWhite" size="lg" href="https://wa.me/923001002226">WhatsApp Us</Button>
+              <Button variant="outlineWhite" size="lg" href="https://wa.me/923007929616">WhatsApp Us</Button>
             </div>
           </motion.div>
         </div>

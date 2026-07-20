@@ -17,6 +17,8 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
+import { PageExtras } from "@/components/sections/PageExtras";
+import { AnimatedHeroTitle } from "@/components/ui/AnimatedHeroTitle";
 import styles from "./page.module.css";
 
 const fadeUp: Variants = {
@@ -62,7 +64,7 @@ export default function SoftwarePage() {
         <div className={styles.heroContainer}>
           <motion.div className={styles.heroContent} initial="hidden" animate="visible" variants={fadeUp}>
             <span className={styles.eyebrow}>Software</span>
-            <h1 className={styles.heroTitle}>Smart EV Charging Starts Here</h1>
+            <AnimatedHeroTitle text="Smart EV Charging Starts Here" className={styles.heroTitle} />
             <p className={styles.heroSubtitle}>
               The CITA EV App and Charge Point Management System give you full
               control of every charger &mdash; from your phone or your desk.
@@ -91,8 +93,14 @@ export default function SoftwarePage() {
               ))}
             </motion.div>
             <div className={styles.storeBadges}>
-              <a href="https://apps.apple.com/gb/app/citaev/id6505054937" target="_blank" rel="noopener noreferrer" className={styles.storeBadge}>App Store</a>
-              <a href="https://play.google.com/store/apps/details?id=com.cita.ev&hl=en" target="_blank" rel="noopener noreferrer" className={styles.storeBadge}>Google Play</a>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <a href="https://apps.apple.com/gb/app/citaev/id6505054937" target="_blank" rel="noopener noreferrer" className={styles.storeBadge}>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" />
+              </a>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <a href="https://play.google.com/store/apps/details?id=com.cita.ev&hl=en" target="_blank" rel="noopener noreferrer" className={styles.storeBadge}>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+              </a>
             </div>
           </motion.div>
           <motion.div className={styles.splitImageWrap} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
@@ -148,6 +156,19 @@ export default function SoftwarePage() {
         </div>
       </section>
 
+      {/* EXTRA SECTIONS */}
+      <PageExtras
+        trustItems={["OCPP 1.6 Compatible", "Works with All CITA Chargers", "Real-Time Monitoring", "Secure Access Control"]}
+        whyTitle="Built for operators of every size"
+        whySubtitle="One platform that scales from a single home charger to a nationwide network."
+        features={[
+          { title: "For Homes", text: "The CITA EV App lets homeowners schedule, monitor and control charging from their phone." },
+          { title: "For Businesses", text: "CPMS manages access, billing and multiple chargers across one or many locations." },
+          { title: "For Fleets", text: "Centralised dashboards, usage analytics and load management keep fleets moving." },
+        ]}
+        altBackground
+      />
+
       {/* CTA */}
       <section className={styles.ctaSection}>
         <motion.div className={styles.ctaCard} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
@@ -155,7 +176,7 @@ export default function SoftwarePage() {
           <p className={styles.ctaText}>Book a demo or ask our team how CITA software fits your charging operation.</p>
           <div className={styles.ctaButtons}>
             <Link href="/contact" className={styles.ctaPrimary}>Book a Demo</Link>
-            <a href="https://wa.me/923001002226" className={styles.ctaSecondary} target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+            <a href="https://wa.me/923007929616" className={styles.ctaSecondary} target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
           </div>
         </motion.div>
       </section>
