@@ -10,10 +10,8 @@
 }
 
 .scrolled {
-  background-color: rgba(5, 14, 29, 0.35);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+  background-color: var(--background-white);
+  box-shadow: var(--shadow-sm);
   padding: 1rem 0;
 }
 
@@ -50,13 +48,13 @@
 }
 
 .logo img {
-  height: 80px !important;
+  height: 94px !important;
   width: auto !important;
 }
 
 @media (max-width: 640px) {
   .logo img {
-    height: 88px !important;
+    height: 100px !important;
   }
 }
 
@@ -95,7 +93,7 @@
 }
 
 .scrolled .navLink {
-  color: #FFFFFF;
+  color: var(--primary-color);
 }
 
 .navLink:hover {
@@ -206,7 +204,7 @@
 }
 
 .scrolled .mobileToggle {
-  color: #FFFFFF;
+  color: var(--primary-color);
 }
 
 @media (min-width: 1024px) {

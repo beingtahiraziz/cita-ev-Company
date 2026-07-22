@@ -19,6 +19,11 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "CITA EV Chargers Pakistan | Official Distributor",
   description: "Advanced EV Charging Solutions Designed For Homes, Businesses, Fleets, And Public Infrastructure Across Pakistan.",
+  icons: {
+    icon: [{ url: "/images/Favicon.png", type: "image/png" }],
+    shortcut: "/images/Favicon.png",
+    apple: "/images/Favicon.png",
+  },
 };
 
 export default function RootLayout({
